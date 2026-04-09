@@ -28,15 +28,6 @@ const Hero = () => {
         </h1>
         <p className="hero-sub">Exceptional care. Real comfort. True home.</p>
 
-        <div className="hero-actions">
-          <Link href="/book-tour" className="hero-cta-primary">
-            Book A Tour
-          </Link>
-          <Link href="/about" className="hero-cta-ghost">
-            Our Approach
-          </Link>
-        </div>
-
         <div className="hero-trust-row">
           <div className="hero-trust-item">
             <span className="hero-trust-icon">

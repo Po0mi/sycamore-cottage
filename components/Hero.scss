@@ -75,7 +75,7 @@
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 15vw, 12rem);
   font-weight: 400;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.06em;
   color: var(--blue-mid);
   z-index: 2;
   justify-self: center;
@@ -105,31 +105,18 @@
 }
 
 .hero-sub {
-  grid-area: 3 / 5 / 5 / 8;
+  grid-area: 4 / 2 / 5 / 7;
   font-family: var(--font-body);
-  font-size: clamp(0.85rem, 1.2vw, 1.5rem);
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
   font-weight: 100;
+  align-self: start;
   color: var(--gray-100);
-  z-index: 2;
-  justify-self: start;
-  padding-left: 0rem;
-  padding-bottom: 2rem;
-}
-
-.hero-actions {
-  grid-area: 4 / 3 / 5 / 6;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  align-self: center;
-  justify-self: center;
-  flex-wrap: wrap;
   z-index: 2;
 }
 
 // ── Trust Badge ─────────────────────────
 .hero-trust-row {
-  grid-area: 4 / 2 / 6 / 7;
+  grid-area: 3 / 2 / 6 / 7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,19 +141,19 @@
 }
 
 .hero-trust-icon {
-  width: 32px;
-  height: 32px;
-  background: rgba(147, 180, 247, 0.2);
+  width: 35px;
+  height: 35px;
+  background: rgba(37, 99, 235, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--white);
+  color: var(--blue-mid);
 
   svg {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -180,63 +167,11 @@
 }
 
 // ─────────────────────────────────────────
-// CTAs
-// ─────────────────────────────────────────
-.hero-cta-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  background: var(--blue);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.85rem 1.75rem;
-  border-radius: 3px;
-  transition:
-    background var(--transition),
-    transform var(--transition);
-
-  &:hover {
-    background: color-mix(in srgb, var(--blue) 80%, black);
-    transform: translateY(-2px);
-  }
-}
-
-.hero-cta-ghost {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.75);
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.85rem 1.75rem;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition:
-    border-color var(--transition),
-    color var(--transition),
-    transform var(--transition);
-
-  &:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-}
-
-// ─────────────────────────────────────────
 // Mouse scroll indicator
 // ─────────────────────────────────────────
 .hero-mouse-scroll {
   position: absolute;
-  bottom: 5rem;
+  bottom: 10rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -301,9 +236,7 @@
     justify-self: end;
     padding-right: 14rem;
   }
-  .hero-sub {
-    grid-area: 3 / 5 / 5 / 8;
-  }
+
   .hero-label {
     grid-area: 1 / 2 / 3 /7;
     font-size: clamp(3.5rem, 10vw, 14rem);
@@ -385,15 +318,13 @@
   }
 
   .hero-label {
-    font-size: clamp(1.25rem, 10vw, 3.75rem);
+    font-size: clamp(2.3rem, 12vw, 3.75rem);
     align-self: center;
-    padding: 0;
   }
   .hero-title {
-    font-size: clamp(2.5rem, 13vw, 2rem);
-    padding: 0;
-    text-align: center;
+    font-size: clamp(1.5rem, 1vw, 1rem);
     align-self: center;
+    max-width: 100ch;
   }
   .hero-title2 {
     font-size: clamp(2.3rem, 12vw, 3.75rem);
@@ -403,16 +334,7 @@
   .hero-sub {
     align-self: center;
   }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    width: 100%;
-
-    a {
-      width: 100%;
-      justify-content: center;
-    }
+  .hero-mouse-scroll {
+    bottom: 5rem;
   }
 }
