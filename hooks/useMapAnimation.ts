@@ -13,6 +13,7 @@ const useMapAnimation = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const detailsRef = useRef<HTMLDivElement[]>([]);
   const ctaRef = useRef<HTMLAnchorElement>(null);
+  const mapRef = useRef<any>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -24,9 +25,9 @@ const useMapAnimation = () => {
 
     if (!section || !card) return;
 
-    gsap.set(card, { opacity: 0, x: -60 });
+    gsap.set(card, { opacity: 0 });
     gsap.set([label, heading], { opacity: 0, y: 20 });
-    gsap.set(details, { opacity: 0, x: -30 });
+    gsap.set(details, { opacity: 0 });
     gsap.set(cta, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({
@@ -35,10 +36,15 @@ const useMapAnimation = () => {
         start: "top 70%",
         end: "bottom 30%",
         toggleActions: "play none none none",
+        onEnter: () => {
+          if (mapRef.current) {
+            mapRef.current.invalidateSize();
+          }
+        },
       },
     });
 
-    tl.to(card, { opacity: 1, x: 0, duration: 0.8, ease: "back.out(0.6)" })
+    tl.to(card, { opacity: 1, duration: 0.8, ease: "power2.out" })
       .to(
         label,
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
@@ -51,7 +57,7 @@ const useMapAnimation = () => {
       )
       .to(
         details,
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+        { opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
         "-=0.5",
       )
       .to(
@@ -79,7 +85,15 @@ const useMapAnimation = () => {
     };
   }, []);
 
-  return { sectionRef, cardRef, labelRef, headingRef, detailsRef, ctaRef };
+  return {
+    sectionRef,
+    cardRef,
+    labelRef,
+    headingRef,
+    detailsRef,
+    ctaRef,
+    mapRef,
+  };
 };
 
 export default useMapAnimation;

@@ -58,7 +58,8 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
             <span className="testimonials-label-text">What people say</span>
           </div>
           <h2 className="testimonials-heading" ref={headingRef}>
-            <em>Trusted </em> by families across Hampshire.
+            <em>Trusted </em> <br />
+            by families across Hampshire.
           </h2>
         </div>
         <div className="testimonials-rating-block" ref={ratingsRef}>

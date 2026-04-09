@@ -39,15 +39,16 @@
 
 .testimonials-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--ink);
 
   em {
     font-style: italic;
     color: var(--blue);
+    font-size: clamp(1.75rem, 3.5vw, 5rem);
   }
 }
 
@@ -251,6 +252,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+  }
+  .testimonials-heading em {
+    font-size: clamp(3rem, 3.5vw, 5rem);
   }
 
   .testimonials-rating-block {

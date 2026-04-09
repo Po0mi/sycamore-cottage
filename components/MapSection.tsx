@@ -8,21 +8,28 @@ const LAT = 51.25127075425786;
 const LNG = -1.0855206229821315;
 
 const MapSection = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
 
-  const { sectionRef, cardRef, labelRef, headingRef, detailsRef, ctaRef } =
-    useMapAnimation();
+  const {
+    sectionRef,
+    cardRef,
+    labelRef,
+    headingRef,
+    detailsRef,
+    ctaRef,
+    mapRef,
+  } = useMapAnimation();
 
   useEffect(() => {
-    if (mapInstanceRef.current || !mapRef.current) return;
+    if (mapInstanceRef.current || !mapContainerRef.current) return;
 
     import("leaflet").then((L) => {
-      if (mapInstanceRef.current || !mapRef.current) return;
+      if (mapInstanceRef.current || !mapContainerRef.current) return;
 
       import("leaflet/dist/leaflet.css");
 
-      const map = L.map(mapRef.current, {
+      const map = L.map(mapContainerRef.current, {
         center: [LAT, LNG],
         zoom: 15,
         zoomControl: false,
@@ -50,10 +57,11 @@ const MapSection = () => {
         `,
         iconSize: [40, 40],
         iconAnchor: [20, 20],
+        popupAnchor: [0, -20],
       });
 
-      const marker = L.marker([LAT, LNG], { icon }).addTo(map);
-      marker
+      L.marker([LAT, LNG], { icon })
+        .addTo(map)
         .bindPopup(
           `<div class="map-popup">
             <strong>Sycamore Cottage</strong>
@@ -64,20 +72,23 @@ const MapSection = () => {
         .openPopup();
 
       L.control.zoom({ position: "bottomright" }).addTo(map);
+
       mapInstanceRef.current = map;
+      mapRef.current = map;
     });
 
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
+        mapRef.current = null;
       }
     };
   }, []);
 
   return (
     <section className="map-section" id="find-us" ref={sectionRef}>
-      <div ref={mapRef} className="map-container" />
+      <div ref={mapContainerRef} className="map-container" />
       <div className="map-card" ref={cardRef}>
         <div className="map-card-label" ref={labelRef}>
           <span className="map-card-label-text">Find Us</span>
@@ -125,6 +136,7 @@ const MapSection = () => {
               </p>
             </div>
           </div>
+
           <div
             className="map-card-detail-item"
             ref={(el) => {
@@ -149,6 +161,7 @@ const MapSection = () => {
               <p>01256 478952</p>
             </div>
           </div>
+
           <div
             className="map-card-detail-item"
             ref={(el) => {
@@ -186,6 +199,7 @@ const MapSection = () => {
             </div>
           </div>
         </div>
+
         <a
           className="map-card-cta"
           ref={ctaRef}

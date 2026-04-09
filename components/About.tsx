@@ -52,8 +52,8 @@ const About = () => {
           <br />
           <em>Sycamore</em>{" "}
           <span className="about-heading-ghost">Cottage </span>
-          <span className="about-heading-faded">care that feels like</span>{" "}
-          <em>home.</em>
+          <span className="about-heading-faded">care that feels</span>{" "}
+          <em>like home.</em>
         </h2>
       </div>
 

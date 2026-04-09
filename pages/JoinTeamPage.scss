@@ -89,12 +89,13 @@
   font-weight: 400;
   color: var(--white);
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1;
   margin-bottom: 1.25rem;
 
   em {
     font-style: italic;
     color: var(--blue-mid);
+    font-size: clamp(2rem, 5vw, 5rem);
   }
 }
 
@@ -269,5 +270,8 @@
   .join-team-card {
     box-shadow: none;
     border: 1px solid var(--gray-100);
+  }
+  .join-team-heading em {
+    font-size: clamp(3rem, 5vw, 5rem);
   }
 }
