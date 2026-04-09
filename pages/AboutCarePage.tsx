@@ -176,7 +176,7 @@ const AboutPage = ({ team }: AboutPageProps) => {
                 <span className="about-section-label-text">Our Team</span>
               </div>
               <div className="about-team-cards">
-                {team.map(({ initials, name, role }, index) => (
+                {(team || []).map(({ initials, name, role }, index) => (
                   <div
                     key={name}
                     className="about-team-card"

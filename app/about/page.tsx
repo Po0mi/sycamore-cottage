@@ -20,10 +20,16 @@ const FALLBACK_TEAM = [
 ];
 
 export default async function About() {
-  const sanityTeam = await client.fetch(teamQuery);
-  const team =
-    Array.isArray(sanityTeam) && sanityTeam.length > 0
-      ? sanityTeam
-      : FALLBACK_TEAM;
+  let sanityTeam = null;
+
+  try {
+    sanityTeam = await client.fetch(teamQuery);
+  } catch (error) {
+    console.error("Failed to fetch team:", error);
+  }
+
+  // FIX: Ensure we always have an array
+  const team = Array.isArray(sanityTeam) ? sanityTeam : FALLBACK_TEAM;
+
   return <AboutPage team={team} />;
 }
