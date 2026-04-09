@@ -1,0 +1,24 @@
+:root {
+  --white: #ffffff;
+  --off-white: #f5f6f8;
+  --gray-50: #eef0f3;
+  --gray-100: #d8dce3;
+  --gray-400: #8c93a0;
+  --gray-700: #3a3f4a;
+  --ink: #111318;
+  --blue: #2563eb;
+  --blue-light: #eff4ff;
+  --blue-mid: #93b4f7;
+
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --bp-mobile: 640px;
+  --bp-tablet: 1024px;
+
+  --font-display: "IBM Plex Serif", serif;
+  --font-body: "Nunito", sans-serif;
+  --font-accent: "Crimson Pro", Georgia, serif;
+}

@@ -1,0 +1,270 @@
+// ─────────────────────────────────────────
+// Join The Team Page
+// ─────────────────────────────────────────
+.join-team {
+  font-family: var(--font-body);
+}
+
+// ─────────────────────────────────────────
+// Hero — full bleed
+// ─────────────────────────────────────────
+.join-team-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+// ── Background image ───────────────────
+.join-team-hero-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
+
+.join-team-hero-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--ink);
+}
+
+// ── Overlay ────────────────────────────
+.join-team-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 12, 20, 0.75) 0%,
+    rgba(10, 12, 20, 0.55) 50%,
+    rgba(10, 12, 20, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+// ── Content grid ───────────────────────
+.join-team-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 5vw, 3.5rem)
+    clamp(4rem, 8vw, 6rem);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+// ── Label ──────────────────────────────
+.join-team-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.join-team-label-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+}
+
+// ── Heading ────────────────────────────
+.join-team-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+
+  em {
+    font-style: italic;
+    color: var(--blue-mid);
+  }
+}
+
+// ── Sub ────────────────────────────────
+.join-team-sub {
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 44ch;
+  margin-bottom: 2rem;
+}
+
+// ── Perks ──────────────────────────────
+.join-team-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.join-team-perk {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.join-team-perk-icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue-mid);
+
+  svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.join-team-perk-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+// ── Vacancy card ───────────────────────
+.join-team-card {
+  background: var(--white);
+  border-radius: 4px;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 12px 48px rgba(10, 12, 20, 0.2);
+}
+
+.join-team-card-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  align-self: flex-start;
+}
+
+.join-team-card-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gray-400);
+  flex-shrink: 0;
+}
+.join-team-card-pill.hiring {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.join-team-card-pill-dot.hiring {
+  background: #16a34a;
+}
+.join-team-card-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  em {
+    font-style: italic;
+    color: var(--blue);
+  }
+}
+
+.join-team-card-body {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--gray-400);
+}
+
+.join-team-card-note {
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: var(--gray-400);
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--gray-50);
+}
+
+.join-team-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: 0.75rem 1.5rem;
+  border-radius: 3px;
+  text-decoration: none;
+  align-self: flex-start;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+
+  svg {
+    width: 12px;
+    height: 12px;
+    transition: transform var(--transition);
+  }
+
+  &:hover {
+    background: color-mix(in srgb, var(--blue) 80%, black);
+    transform: translateY(-1px);
+
+    svg {
+      transform: translateX(3px);
+    }
+  }
+}
+
+// ─────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────
+@media (max-width: 1024px) {
+  .join-team-hero-content {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .join-team-hero-overlay {
+    background: rgba(10, 12, 20, 0.65);
+  }
+
+  .join-team-card {
+    box-shadow: none;
+    border: 1px solid var(--gray-100);
+  }
+}

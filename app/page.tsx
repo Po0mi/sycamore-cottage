@@ -1,0 +1,23 @@
+import { client } from "@/lib/sanity";
+import { contactQuery } from "@/lib/queries";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import QuoteBanner from "@/components/QuoteBanner";
+import Testimonials from "@/components/Testimonials";
+import MapSection from "@/components/MapSection";
+import Contact from "@/components/Contact";
+
+export default async function Home() {
+  const contact = await client.fetch(contactQuery);
+
+  return (
+    <>
+      <Hero />
+      <About />
+      <QuoteBanner />
+      <Testimonials />
+      <MapSection />
+      <Contact contact={contact} />
+    </>
+  );
+}

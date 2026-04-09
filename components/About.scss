@@ -1,0 +1,225 @@
+// ─────────────────────────────────────────
+// About
+// ─────────────────────────────────────────
+.about {
+  background: var(--off-white);
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.5rem, 5vw, 3.5rem)
+    clamp(3.5rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--font-body);
+}
+
+// ── Image bleed ────────────────────────
+.about-image-bleed {
+  position: absolute;
+  right: -2rem;
+  top: 12rem;
+  bottom: 0;
+  width: 40%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.about-image-inner {
+  width: 100%;
+  height: 110%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.about-image-inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(to right, var(--off-white), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+// ── Label ──────────────────────────────
+.about-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.about-label-text {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+// ── Heading ────────────────────────────
+.about-heading-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.5rem;
+}
+
+.about-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  max-width: 80%;
+}
+
+.about-heading em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.about-heading-faded {
+  color: rgba(17, 19, 24, 0.3);
+}
+
+.about-heading-ghost {
+  color: var(--blue);
+  font-style: italic;
+}
+
+// ── Sub copy ───────────────────────────
+.about-sub {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--gray-700);
+  max-width: 100ch;
+  margin-bottom: clamp(2rem, 5vw, 2.75rem);
+  position: relative;
+  z-index: 2;
+}
+
+// ── Features — ruled row layout ────────
+.about-features {
+  display: flex;
+  flex-direction: column;
+  max-width: 55%;
+  position: relative;
+  z-index: 2;
+}
+
+.about-feature-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(17, 19, 24, 0.08);
+  position: relative;
+  transition: border-color 0.2s ease;
+
+  &:last-child {
+    border-bottom: 1px solid rgba(17, 19, 24, 0.08);
+  }
+
+  &::before {
+    display: none;
+  }
+
+  &:hover .about-feature-index {
+    color: rgba(37, 99, 235, 0.45);
+  }
+}
+
+.about-feature-index {
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgba(37, 99, 235, 0.18);
+  line-height: 1.1;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+  padding-top: 0.1rem;
+}
+
+.about-feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.about-feature-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.about-feature-desc {
+  font-size: 0.83rem;
+  line-height: 1.75;
+  color: var(--gray-700);
+}
+
+// ─────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .about-image-bleed {
+    top: 5rem;
+  }
+
+  .about-feature-title {
+    font-size: 1.1rem;
+  }
+
+  .about-feature-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-heading {
+    max-width: 100%;
+  }
+
+  .about-features {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-image-bleed {
+    display: none;
+  }
+
+  .about-heading {
+    font-size: clamp(2rem, 10vw, 3rem);
+    max-width: 100%;
+  }
+
+  .about-sub {
+    max-width: 100%;
+  }
+
+  .about-features {
+    max-width: 100%;
+  }
+
+  .about-feature-item {
+    grid-template-columns: 60px 1fr;
+  }
+}

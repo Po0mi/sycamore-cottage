@@ -1,0 +1,138 @@
+.contact {
+  background: var(--ink);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+.contact-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-style: italic;
+  color: rgba(147, 180, 247, 0.04);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  user-select: none;
+}
+
+.contact-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  text-align: center;
+}
+
+.contact-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-label-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+}
+
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+
+  em {
+    font-style: italic;
+    color: var(--blue-mid);
+  }
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color var(--transition);
+
+  svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    color: var(--blue-mid);
+  }
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.contact-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.contact-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+
+  strong {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--blue-mid);
+    line-height: 1;
+    display: block;
+  }
+
+  span {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 4px;
+  }
+}
+
+.contact-stat-div {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .contact-stat {
+    padding: 0 1.25rem;
+  }
+}

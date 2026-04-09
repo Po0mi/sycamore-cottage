@@ -1,0 +1,465 @@
+// ─────────────────────────────────────────
+// Navbar
+// ─────────────────────────────────────────
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    height var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.navbar.scrolled {
+  height: 60px;
+  background: var(--off-white);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 var(--gray-100),
+    0 4px 24px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ── Logo ───────────────────────────────
+.navbar-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.navbar-logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: filter var(--transition);
+  filter: invert(1);
+}
+.navbar.scrolled .navbar-logo-img {
+  filter: none;
+}
+
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.navbar-logo-mark {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  transition: color var(--transition);
+}
+
+.navbar.scrolled .navbar-logo-mark {
+  color: var(--ink);
+}
+
+.navbar-logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  transition: color var(--transition);
+}
+
+.navbar.scrolled .navbar-logo-sub {
+  color: var(--blue);
+}
+
+.navbar-logo:hover .navbar-logo-mark {
+  color: var(--blue-mid);
+}
+
+.navbar.scrolled .navbar-logo:hover .navbar-logo-mark {
+  color: var(--blue);
+}
+
+// ── Desktop Nav ────────────────────────
+.navbar-links {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 1.5rem;
+}
+
+.navbar-link {
+  position: relative;
+}
+
+.navbar-link a {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color var(--transition);
+}
+
+.navbar-link a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--white);
+  transition: width var(--transition);
+}
+
+.navbar-link a:hover {
+  color: var(--white);
+}
+
+.navbar-link a:hover::after {
+  width: 100%;
+}
+
+.navbar-link a.active {
+  color: var(--white);
+}
+
+.navbar-link a.active::after {
+  width: 100%;
+}
+
+// scrolled state — dark text
+.navbar.scrolled .navbar-link a {
+  color: var(--gray-400);
+}
+
+.navbar.scrolled .navbar-link a::after {
+  background: var(--blue);
+}
+
+.navbar.scrolled .navbar-link a:hover {
+  color: var(--ink);
+}
+
+.navbar.scrolled .navbar-link a.active {
+  color: var(--blue);
+}
+
+// ── CTA Button ─────────────────────────
+.navbar-cta a {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: transparent;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.navbar-cta a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+.navbar.scrolled .navbar-cta a {
+  color: var(--white);
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.navbar.scrolled .navbar-cta a:hover {
+  background: color-mix(in srgb, var(--blue) 80%, black);
+  border-color: color-mix(in srgb, var(--blue) 80%, black);
+  transform: translateY(-1px);
+}
+
+// ── Hamburger ──────────────────────────
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.navbar-hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform var(--transition),
+    opacity var(--transition),
+    width var(--transition),
+    background var(--transition);
+}
+
+.navbar.scrolled .navbar-hamburger span {
+  background: var(--ink);
+}
+
+.navbar-hamburger span:nth-child(1) {
+  width: 100%;
+}
+.navbar-hamburger span:nth-child(2) {
+  width: 70%;
+}
+.navbar-hamburger span:nth-child(3) {
+  width: 100%;
+}
+
+.navbar-hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  width: 100%;
+}
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar-hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+// ── Mobile breakpoint ──────────────────
+@media (max-width: 768px) {
+  .navbar-links,
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  // Always white on mobile — hero video is dark
+  .navbar-logo-mark {
+    color: var(--white) !important;
+  }
+
+  .navbar-logo-sub {
+    color: var(--blue-mid) !important;
+  }
+
+  .navbar-hamburger span {
+    background: var(--white) !important;
+  }
+
+  // When scrolled — dark
+  .navbar.scrolled .navbar-logo-mark {
+    color: var(--ink) !important;
+  }
+
+  .navbar.scrolled .navbar-logo-sub {
+    color: var(--blue) !important;
+  }
+
+  .navbar.scrolled .navbar-hamburger span {
+    background: var(--ink) !important;
+  }
+
+  .navbar.scrolled .navbar-logo-img {
+    filter: none !important;
+  }
+
+  // When menu is open — dark logo + X, solid white navbar
+  .navbar-hamburger.open span {
+    background: var(--ink) !important;
+  }
+
+  .navbar.menu-open {
+    background: var(--white) !important;
+    border-bottom-color: var(--gray-100) !important;
+    box-shadow: none !important;
+  }
+
+  .navbar.menu-open .navbar-logo-mark {
+    color: var(--ink) !important;
+  }
+
+  .navbar.menu-open .navbar-logo-sub {
+    color: var(--blue) !important;
+  }
+
+  .navbar.menu-open .navbar-logo-img {
+    filter: none !important;
+  }
+}
+
+// ── Mobile Overlay ─────────────────────
+.navbar-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(2rem, 10vw, 5rem);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.navbar-mobile::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--blue);
+}
+
+.navbar-mobile.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .navbar-mobile {
+    display: flex;
+  }
+}
+
+.navbar-mobile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.navbar-mobile-link {
+  overflow: hidden;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.navbar-mobile-link:first-child {
+  border-top: 1px solid var(--gray-100);
+}
+
+.navbar-mobile-link a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 7vw, 2.75rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  transition:
+    color var(--transition),
+    padding-left var(--transition);
+}
+
+.navbar-mobile-link a::after {
+  content: "→";
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  opacity: 0;
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+  transform: translateX(-8px);
+}
+
+.navbar-mobile-link a:hover {
+  color: var(--ink);
+  padding-left: 0.5rem;
+}
+
+.navbar-mobile-link a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navbar-mobile-link a.active {
+  color: var(--blue);
+}
+
+.navbar-mobile-link a.active::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navbar-mobile-cta {
+  margin-bottom: 0;
+}
+
+.navbar-mobile-cta a {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--blue);
+  padding: 0.85rem 2rem;
+  border-radius: 3px;
+  display: inline-block;
+  transition: background var(--transition);
+}
+
+.navbar-mobile-cta a:hover {
+  background: color-mix(in srgb, var(--blue) 80%, black);
+}
+
+.navbar-mobile-footer {
+  position: absolute;
+  bottom: 2.5rem;
+  left: clamp(2rem, 10vw, 5rem);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
