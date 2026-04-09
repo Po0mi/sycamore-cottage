@@ -313,7 +313,6 @@
 @media (max-width: 480px) {
   .hero-container {
     padding: 6rem 1.25rem 4rem;
-    gap: 1rem;
   }
 
   .hero-label {
@@ -321,9 +320,11 @@
     align-self: center;
   }
   .hero-title {
-    font-size: clamp(1.5rem, 1vw, 1rem);
+    font-size: clamp(1.5rem, 1vw, 1em);
     align-self: center;
     max-width: 100ch;
+    font-weight: 200;
+    margin-bottom: 1rem;
   }
   .hero-title2 {
     font-size: clamp(2.3rem, 12vw, 3.75rem);
