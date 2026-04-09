@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity";
 import { teamQuery } from "@/lib/queries";
 import AboutPage from "@/pages/AboutCarePage";
 
+export const revalidate = 60; // revalidate every 60 seconds
+
 const FALLBACK_TEAM = [
   {
     initials: "AV",
@@ -21,15 +23,11 @@ const FALLBACK_TEAM = [
 
 export default async function About() {
   let sanityTeam = null;
-
   try {
     sanityTeam = await client.fetch(teamQuery);
   } catch (error) {
     console.error("Failed to fetch team:", error);
   }
-
-  // FIX: Ensure we always have an array
   const team = Array.isArray(sanityTeam) ? sanityTeam : FALLBACK_TEAM;
-
   return <AboutPage team={team} />;
 }
