@@ -7,8 +7,10 @@ import Testimonials from "@/components/Testimonials";
 import MapSection from "@/components/MapSection";
 import Contact from "@/components/Contact";
 
+export const revalidate = 0;
+
 export default async function Home() {
-  const contact = await client.fetch(contactQuery);
+  const [contact] = await Promise.all([client.fetch(contactQuery)]);
 
   return (
     <>
