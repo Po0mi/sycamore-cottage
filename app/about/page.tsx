@@ -2,7 +2,7 @@ import { client } from "@/lib/sanity";
 import { teamQuery } from "@/lib/queries";
 import AboutPage from "@/pages/AboutCarePage";
 
-export const revalidate = 60; // revalidate every 60 seconds
+export const revalidate = 0; // revalidate every 60 seconds
 
 const FALLBACK_TEAM = [
   {
