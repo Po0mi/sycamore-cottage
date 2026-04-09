@@ -13,7 +13,7 @@ const FALLBACK_TEAM = [
   {
     initials: "BG",
     name: "Beverly George",
-    role: "Operations Manager",
+    role: "Operations Assistant",
     order: 3,
   },
   { initials: "VD", name: "Veronica De Castro", role: "Team Leader", order: 4 },
