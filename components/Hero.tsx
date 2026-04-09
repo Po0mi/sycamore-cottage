@@ -21,7 +21,7 @@ const Hero = () => {
         </video>
 
         <div className="hero-overlay" />
-        <h2 className="hero-label">Sycamore</h2>
+        <h2 className="hero-label">Sycamore Cottage</h2>
         <h1 className="hero-title">care that feels</h1>
         <h1 className="hero-title2">
           <em>like home.</em>

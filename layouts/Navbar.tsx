@@ -58,20 +58,37 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="navbar-cta">
-            <Link href={CTA.href}>{CTA.label}</Link>
-          </div>
+          <div className="navbar-right">
+            <div className="navbar-cta">
+              <Link href={CTA.href}>
+                <span>{CTA.label}</span>
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
 
-          <button
-            className={`navbar-hamburger${isOpen ? " open" : ""}`}
-            onClick={toggle}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+            <button
+              className={`navbar-hamburger${isOpen ? " open" : ""}`}
+              onClick={toggle}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -79,15 +96,21 @@ const Navbar = () => {
         className={`navbar-mobile${isOpen ? " open" : ""}`}
         aria-hidden={!isOpen}
       >
+        <div className="navbar-mobile-header">
+          <span className="navbar-mobile-eyebrow">Navigation</span>
+        </div>
+
         <ul className="navbar-mobile-links">
-          {NAV_LINKS.map(({ label, href }) => (
+          {NAV_LINKS.map(({ label, href }, i) => (
             <li key={href} className="navbar-mobile-link">
               <Link
                 href={href}
                 className={isActive(href) ? "active" : ""}
                 onClick={close}
               >
-                {label}
+                <span className="navbar-mobile-link-num">0{i + 1}</span>
+                <span className="navbar-mobile-link-label">{label}</span>
+                <span className="navbar-mobile-link-arrow">→</span>
               </Link>
             </li>
           ))}
@@ -96,6 +119,19 @@ const Navbar = () => {
         <div className="navbar-mobile-cta">
           <Link href={CTA.href} onClick={close}>
             {CTA.label}
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </Link>
         </div>
 
