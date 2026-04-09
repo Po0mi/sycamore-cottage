@@ -103,10 +103,10 @@
 // ── Sub copy ───────────────────────────
 .about-sub {
   font-size: 0.95rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 80ch;
+  max-width: 90ch;
   margin-bottom: clamp(2rem, 5vw, 2.5rem);
   position: relative;
   z-index: 2;
@@ -140,7 +140,7 @@
 }
 
 .about-feature-index {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-style: italic;
   color: rgba(37, 99, 235, 0.2);
@@ -155,16 +155,16 @@
 }
 
 .about-feature-title {
-  font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--ink);
+  color: var(--blue);
+  font-weight: 400;
 }
 
 .about-feature-desc {
   font-size: 0.85rem;
   line-height: 1.7;
   color: var(--gray-700);
+  font-weight: 300;
 }
 
 // ─────────────────────────────────────────
@@ -200,7 +200,7 @@
   }
 
   .about-heading {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(2rem, 10vw, 2rem);
     max-width: 100%;
   }
 

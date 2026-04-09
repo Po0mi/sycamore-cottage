@@ -100,8 +100,9 @@
   font-size: clamp(0.82rem, 1.2vw, 0.95rem);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.8);
-  max-width: 46ch;
+  max-width: 70ch;
   margin-bottom: 2rem;
+  font-weight: 200;
 }
 
 // ── Stats ──────────────────────────────
@@ -112,11 +113,13 @@
 }
 
 .about-hero-stat strong {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-size: 2rem;
+  font-weight: 500;
   font-style: italic;
   color: var(--blue-mid);
   display: block;
+  text-align: center;
   line-height: 1;
 }
 
@@ -125,9 +128,10 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.4);
   margin-top: 4px;
   display: block;
+  text-align: center;
 }
 
 // ── Right image ────────────────────────
@@ -202,6 +206,7 @@
   line-height: 1.85;
   color: var(--gray-700);
   margin-bottom: 1rem;
+  font-weight: 300;
 
   &:last-child {
     margin-bottom: 0;
@@ -218,7 +223,7 @@
 .about-team-cards {
   display: flex;
   flex-direction: column;
-  gap: 0; // was 0.875rem — dividers replace gaps
+  gap: 0;
   border-top: 1px solid var(--gray-100);
 }
 
@@ -226,9 +231,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 0; // was 1rem 1.25rem with bg/border
-  background: transparent; // was off-white card
-  border-radius: 0; // was 4px
+  padding: 1rem 0;
+  background: transparent;
+  border-radius: 0;
   border: none;
   border-bottom: 1px solid var(--gray-100);
 }
@@ -237,28 +242,27 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(37, 99, 235, 0.08); // was gradient — flat tint
+  background: rgba(37, 99, 235, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
   font-size: 0.95rem;
-  font-style: italic;
-  color: var(--blue); // was white on gradient
+  color: var(--blue);
   flex-shrink: 0;
 }
 
 .about-team-name {
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
   font-size: 0.95rem;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--ink);
   margin-bottom: 2px;
 }
 
 .about-team-role {
   font-size: 0.62rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--blue);
@@ -269,7 +273,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  border-top: 1px solid var(--gray-100); // was gray-50 — slightly more visible
+  border-top: 1px solid var(--gray-100);
 }
 
 .about-value-item {
@@ -290,7 +294,7 @@
 }
 
 .about-value-num {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-style: italic;
   color: rgba(37, 99, 235, 0.15); // was 0.2 — subtler
@@ -299,10 +303,10 @@
 }
 
 .about-value-title {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--ink);
+  font-family: var(--font-accent);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--blue);
   margin-bottom: 0.4rem;
 }
 
@@ -310,6 +314,7 @@
   font-size: 0.85rem;
   line-height: 1.75;
   color: var(--gray-700);
+  font-weight: 300;
 }
 
 // ── CTA strip ──────────────────────────
@@ -400,6 +405,5 @@
 
   .about-cta-strip {
     flex-direction: column;
-    align-items: flex-start;
   }
 }

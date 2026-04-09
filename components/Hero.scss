@@ -67,7 +67,7 @@
   line-height: 0.9;
   max-width: 10ch;
   text-align: right;
-  padding-right: 3rem;
+  padding-right: 8.5rem;
   font-style: italic;
 }
 .hero-label {
@@ -75,13 +75,13 @@
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 15vw, 12rem);
   font-weight: 400;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.03em;
   color: var(--blue-mid);
   z-index: 2;
   justify-self: center;
   align-self: center;
   font-style: italic;
-  padding-top: 21rem;
+  padding-top: 18rem;
 }
 
 .hero-title2 {
@@ -90,7 +90,7 @@
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 15vw, 12rem);
   font-weight: 400;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: rgba(255, 255, 255);
   z-index: 2;
   justify-self: end;
@@ -108,7 +108,7 @@
   grid-area: 4 / 2 / 5 / 7;
   font-family: var(--font-body);
   font-size: clamp(0.85rem, 1.2vw, 1.1rem);
-  font-weight: 100;
+  font-weight: 200;
   align-self: start;
   color: var(--gray-100);
   z-index: 2;
@@ -141,8 +141,8 @@
 }
 
 .hero-trust-icon {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background: rgba(37, 99, 235, 0.2);
   border-radius: 50%;
   display: flex;
@@ -152,15 +152,15 @@
   color: var(--blue-mid);
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 }
 
 .hero-trust-label {
   font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-size: 0.73rem;
+  font-weight: 200;
   color: rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   letter-spacing: 0.04em;
@@ -206,9 +206,7 @@
 @media (min-width: 1024px) and (max-width: 1440px) {
   .hero-title {
     font-size: clamp(3.5rem, 10vw, 4.5rem);
-    padding-right: 6rem;
-    grid-area: 2 / 1 / 5 / 6;
-    line-height: 0.8;
+    padding-right: 10rem;
   }
   .hero-title2 {
     font-size: clamp(2.5rem, 10vw, 10rem);
@@ -217,7 +215,7 @@
     bottom: 2rem;
   }
   .hero-label {
-    padding-top: 30rem;
+    padding-top: 21rem;
     font-size: clamp(2.5rem, 10vw, 10rem);
   }
 }
@@ -228,7 +226,8 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
   .hero-title {
     font-size: clamp(3.5rem, 10vw, 6rem);
-    line-height: 0.8;
+    line-height: 0.9;
+    padding-right: 10rem;
   }
   .hero-title2 {
     font-size: clamp(3.5rem, 10vw, 14rem);
@@ -240,7 +239,7 @@
   .hero-label {
     grid-area: 1 / 2 / 3 /7;
     font-size: clamp(3.5rem, 10vw, 14rem);
-    padding-top: 26rem;
+    padding-top: 23rem;
   }
 }
 

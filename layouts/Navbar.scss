@@ -69,13 +69,12 @@
   display: flex;
   flex-direction: column;
   line-height: 1;
-  gap: 3px;
+  gap: 2px;
 }
 
 .navbar-logo-mark {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 3vw, 1.55rem);
-  font-weight: 400;
   font-style: italic;
   letter-spacing: 0.01em;
   color: var(--white);
@@ -88,8 +87,8 @@
 
 .navbar-logo-sub {
   font-family: var(--font-body);
-  font-size: 0.52rem;
-  font-weight: 600;
+  font-size: 0.6rem;
+  font-weight: 400;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--blue-mid);
@@ -115,7 +114,7 @@
   gap: clamp(1.5rem, 2.5vw, 2.5rem);
   list-style: none;
   padding: 0;
-  margin-left: 2.5rem;
+  margin-left: 2rem;
 }
 
 .navbar-link {
@@ -124,13 +123,12 @@
 
 .navbar-link a {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.1;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  padding: 6px 0;
+  padding: 3px 0;
   position: relative;
   transition: color var(--transition);
 
@@ -215,8 +213,8 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: var(--blue);
+    border-color: var(--blue);
     transform: translateY(-1px);
 
     svg {

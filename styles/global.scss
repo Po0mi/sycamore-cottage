@@ -10,15 +10,12 @@
   --blue-light: #eff4ff;
   --blue-mid: #93b4f7;
 
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-display: var(--font-gambarino), "Instrument Serif", Georgia, serif;
+  --font-body: var(--font-switzer), "DM Sans", sans-serif;
+  --font-accent: var(--font-switzer), "Crimson Pro", Georgia, serif;
 
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   --bp-mobile: 640px;
   --bp-tablet: 1024px;
-
-  --font-display: "IBM Plex Serif", serif;
-  --font-body: "Nunito", sans-serif;
-  --font-accent: "Crimson Pro", Georgia, serif;
 }
