@@ -16,7 +16,7 @@ interface TestimonialsProps {
 
 const FALLBACK_FEATURED = {
   quote:
-    "Outstanding in all areas — the warmth and professionalism of every member of staff is clearly evident throughout the home.",
+    "Good in all areas — the warmth and professionalism of every member of staff is clearly evident throughout the home.",
   source: "Care Quality Commission · CQC Inspection Report",
 };
 
