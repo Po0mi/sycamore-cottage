@@ -41,7 +41,7 @@ const RESIDENTS: Resident[] = [
     image: "/residents/image5.webp",
     name: "Mike",
     age: "85",
-    quote: "Learn as much as you can.",
+    quote: "Learn as much as you can. Become Educated",
   },
   {
     image: "/residents/image6.webp",
