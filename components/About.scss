@@ -78,23 +78,22 @@
 
 .about-heading {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5.5vw, 6rem);
+  font-size: clamp(2.25rem, 5.5vw, 5.5rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.03em;
   color: var(--ink);
   max-width: 80%;
-}
 
-.about-heading em {
-  font-style: italic;
-  color: var(--blue);
-  font-size: clamp(2.25rem, 5.5vw, 6rem);
+  em {
+    font-style: italic;
+    color: var(--blue);
+  }
 }
 
 .about-heading-faded {
   color: rgba(17, 19, 24, 0.3);
-  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
 }
 
 .about-heading-ghost {
@@ -108,13 +107,13 @@
   font-weight: 300;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 90ch;
+  max-width: 80ch;
   margin-bottom: clamp(2rem, 5vw, 2.5rem);
   position: relative;
   z-index: 2;
 }
 
-// ── Features — ruled row layout ────────
+// ── Features — accordion ───────────────
 .about-features {
   display: flex;
   flex-direction: column;
@@ -123,24 +122,67 @@
   z-index: 2;
 }
 
+// ── Each accordion item ────────────────
 .about-feature-item {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0;
-  padding: 1.25rem 0;
-  padding-left: 0;
   border-top: 1px solid rgba(17, 19, 24, 0.1);
-  position: relative;
 
   &:last-child {
     border-bottom: 1px solid rgba(17, 19, 24, 0.1);
   }
 
-  &::before {
-    display: none;
+  // Active state — blue top rule
+  &.is-open {
+    .about-feature-trigger {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .about-feature-title {
+      color: var(--blue);
+    }
+
+    .about-feature-short {
+      opacity: 0;
+      max-height: 0;
+      margin-top: 0;
+    }
+
+    .about-feature-toggle-icon {
+      &::after {
+        transform: scaleY(0);
+      }
+    }
+
+    .about-feature-body {
+      grid-template-rows: 1fr;
+      padding-bottom: 1.25rem;
+    }
   }
 }
 
+// ── Trigger button ─────────────────────
+.about-feature-trigger {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr 32px;
+  align-items: start;
+  gap: 0;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+
+  &:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// ── Index number ───────────────────────
 .about-feature-index {
   font-family: var(--font-display);
   font-size: 1.75rem;
@@ -148,25 +190,102 @@
   color: rgba(37, 99, 235, 0.2);
   line-height: 1;
   flex-shrink: 0;
+  transition: color var(--transition);
 }
 
-.about-feature-content {
+// ── Header: title + short line ─────────
+.about-feature-header {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  padding-top: 0.15rem;
 }
 
 .about-feature-title {
   font-size: 0.95rem;
-  color: var(--blue);
-  font-weight: 400;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.3;
+  transition: color var(--transition);
+}
+
+.about-feature-short {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--gray-400);
+  line-height: 1.5;
+  max-height: 2rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    opacity var(--transition),
+    max-height var(--transition),
+    margin-top var(--transition);
+}
+
+// ── Toggle icon ────────────────────────
+.about-feature-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.35rem;
+}
+
+.about-feature-toggle-icon {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+
+  // Horizontal bar (always visible)
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--ink);
+    transform: translateY(-50%);
+  }
+
+  // Vertical bar (hidden when open)
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: var(--ink);
+    transform: translateX(-50%) scaleY(1);
+    transition: transform var(--transition);
+  }
+}
+
+// ── Expandable body ────────────────────
+.about-feature-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 0;
+  overflow: hidden;
+
+  // Inner wrapper needed for grid row animation
+  & > * {
+    overflow: hidden;
+  }
 }
 
 .about-feature-desc {
   font-size: 0.85rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--gray-700);
   font-weight: 300;
+  padding-left: 120px;
+  padding-right: 2rem;
 }
 
 // ─────────────────────────────────────────
@@ -181,9 +300,11 @@
     font-size: 1.1rem;
   }
 
+  .about-feature-short,
   .about-feature-desc {
     font-size: 0.9rem;
   }
+
   .about-image-inner {
     height: 110%;
   }
@@ -217,7 +338,20 @@
     max-width: 100%;
   }
 
-  .about-feature-item {
-    grid-template-columns: 80px 1fr;
+  .about-feature-trigger {
+    grid-template-columns: 64px 1fr 28px;
+
+    &::before {
+      left: -clamp(1.5rem, 5vw, 3.5rem);
+    }
+  }
+
+  .about-feature-index {
+    font-size: 1.4rem;
+  }
+
+  .about-feature-desc {
+    padding-left: 64px;
+    padding-right: 0.5rem;
   }
 }

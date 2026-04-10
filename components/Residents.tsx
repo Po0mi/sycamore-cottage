@@ -63,21 +63,31 @@ const Residents = () => {
 
   return (
     <section className="residents" id="residents" ref={sectionRef}>
+      {/* ── Header ── */}
       <div className="residents-top" ref={topRef}>
         <div className="residents-top-left">
           <div className="residents-label">
-            <span className="residents-label-line" />
             <span className="residents-label-text">From Our Residents</span>
           </div>
           <h2 className="residents-heading">
             Words of <em>wisdom.</em>
           </h2>
         </div>
-        <p className="residents-sub">
-          A little advice from the people who matter most our residents.
-        </p>
+        <div className="resident-top-right">
+          <h4 className="residents-sub">
+            A little advice from the people who matter most, our{" "}
+            <em>residents</em>.
+          </h4>
+          <p className="residents-desc">
+            We believe the best insights come from those who call this place
+            home. Their experiences shape how we grow, improve, and continue to
+            provide care that feels personal, thoughtful, and genuinely
+            supportive.
+          </p>
+        </div>
       </div>
 
+      {/* ── Strip ── */}
       <div className="residents-strip" ref={stripRef}>
         {[...RESIDENTS, ...RESIDENTS].map((resident, i) => (
           <button
@@ -102,11 +112,15 @@ const Residents = () => {
             <div className="residents-card-footer">
               <span className="residents-card-name">{resident.name}</span>
               <span className="residents-card-age">Age {resident.age}</span>
+              <span className="residents-card-quote">
+                &ldquo;{resident.quote}&rdquo;
+              </span>
             </div>
           </button>
         ))}
       </div>
 
+      {/* ── Modal ── */}
       {active && (
         <div className="residents-modal" onClick={() => setActive(null)}>
           <div
@@ -147,7 +161,9 @@ const Residents = () => {
             <div className="residents-modal-body">
               <span className="residents-modal-name">{active.name}</span>
               <span className="residents-modal-age">Age {active.age}</span>
-              <p className="residents-modal-quote">"{active.quote}"</p>
+              <p className="residents-modal-quote">
+                &ldquo;{active.quote}&rdquo;
+              </p>
             </div>
           </div>
         </div>

@@ -1,48 +1,56 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import Elder from "@/assets/old-person.webp";
 import useAboutAnimation from "@/hooks/useAboutAnimation";
 import "./About.scss";
 
 interface Feature {
   title: string;
+  short: string;
   desc: string;
 }
 
 const FEATURES: Feature[] = [
   {
     title: "Personalised Care Plans",
-    desc: "Every resident deserves care as unique as they are. Our professionals create up to date care plans that go beyond clinical data, such as medical history and medications, to include the personal details that define each individual. This ensures genuine, personalized care, rooted in our belief that every person matters.",
+    short: "Care as unique as each resident.",
+    desc: "Our professionals create up-to-date care plans that go beyond clinical data, medical history and medications, to include the personal details that define each individual. Genuine, personalised care rooted in our belief that every person matters.",
   },
   {
     title: "Medication Monitoring",
-    desc: "There comes a time when someone may no longer be able to care for themselves. Families want to help, just as they were once cared for, but careers and modern life can make this difficult. Sycamore Cottage provides the support retirees and their families need, including Medication Monitoring services we are happy to offer.",
+    short: "Daily oversight you can rely on.",
+    desc: "There comes a time when someone may no longer be able to care for themselves. Sycamore Cottage provides the support retirees and their families need, including comprehensive Medication Monitoring so nothing is ever missed.",
   },
   {
     title: "Here For You",
-    desc: "We provide residents with empathy and genuine support year-round. Moving somewhere new can feel daunting, so we make every person's experience special. There's always something exciting to look forward to at Sycamore Cottage, and that's just one thing that sets us apart. We love creating opportunities for residents to make new memories and friends.",
+    short: "Empathy and warmth, every day.",
+    desc: "Moving somewhere new can feel daunting, so we make every person's experience special. There's always something to look forward to at Sycamore Cottage, new memories, new friendships, and a home that genuinely feels like yours.",
   },
   {
     title: "Experienced Staff",
-    desc: "Our Registered Manager Anna and the team at Sycamore Cottage are caring, joyous, and dedicated. We believe our responsibility goes beyond a safe environment to creating a joyful one. Our staff will treat your loved ones like family, setting us apart from the clinical feel of some larger care homes.",
+    short: "A team that treats you like family.",
+    desc: "Our Registered Manager Anna and the team are caring, joyous, and dedicated. We believe our responsibility goes beyond a safe environment to creating a joyful one, setting us apart from the clinical feel of larger care homes.",
   },
 ];
 
 const About = () => {
   const { sectionRef } = useAboutAnimation();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
     <section className="about" id="about" ref={sectionRef}>
       <div className="about-image-bleed">
         <div className="about-image-inner">
-          <Image src={Elder} alt="Elderly person" fill />
+          <Image src={Elder} alt="Elderly resident at Sycamore Cottage" fill />
         </div>
       </div>
 
       <div className="about-label">
-        <span className="about-label-line" />
-        <span className="about-label-text">Living & Thriving</span>
+        <span className="about-label-text">Living &amp; Thriving</span>
       </div>
 
       <div className="about-heading-wrap">
@@ -64,17 +72,36 @@ const About = () => {
       </p>
 
       <div className="about-features">
-        {FEATURES.map(({ title, desc }, i) => (
-          <div key={title} className="about-feature-item">
-            <span className="about-feature-index">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div className="about-feature-content">
-              <h4 className="about-feature-title">{title}</h4>
-              <p className="about-feature-desc">{desc}</p>
+        {FEATURES.map(({ title, short, desc }, i) => {
+          const isOpen = openIndex === i;
+          return (
+            <div
+              key={title}
+              className={`about-feature-item${isOpen ? " is-open" : ""}`}
+            >
+              <button
+                className="about-feature-trigger"
+                onClick={() => toggle(i)}
+                aria-expanded={isOpen}
+              >
+                <span className="about-feature-index">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="about-feature-header">
+                  <h4 className="about-feature-title">{title}</h4>
+                  <p className="about-feature-short">{short}</p>
+                </div>
+                <span className="about-feature-toggle" aria-hidden="true">
+                  <span className="about-feature-toggle-icon" />
+                </span>
+              </button>
+
+              <div className="about-feature-body" aria-hidden={!isOpen}>
+                <p className="about-feature-desc">{desc}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
