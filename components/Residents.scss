@@ -19,7 +19,18 @@
 .residents-top-left {
   flex-shrink: 0;
 }
-
+.resident-top-right {
+  display: flex;
+  justify-content: end;
+  padding-right: 3rem;
+}
+.number-right {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: rgb(37, 99, 235, 0.15);
+  font-style: italic;
+}
 // ── Label — no line ────────────────────
 .residents-label {
   margin-bottom: 1rem;
@@ -50,12 +61,11 @@
 
 // ── Sub ────────────────────────────────
 .residents-sub {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.85;
   color: var(--gray-700);
   font-weight: 300;
-  padding-left: 1rem;
-  padding-bottom: 0.25rem;
+  padding-top: 1rem;
   font-family: var(--font-accent);
 
   em {
@@ -64,11 +74,10 @@
   }
 }
 .residents-desc {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.85;
   color: var(--gray-700);
   font-weight: 300;
-  padding-left: 1rem;
   padding-bottom: 0.25rem;
   max-width: 100ch;
 }
@@ -81,7 +90,6 @@
   background: rgba(17, 19, 24, 0.07);
   border-top: 1px solid rgba(17, 19, 24, 0.07);
   border-bottom: 1px solid rgba(17, 19, 24, 0.07);
-  margin-top: 2rem;
 
   &::-webkit-scrollbar {
     display: none;
@@ -278,11 +286,17 @@
   .residents-top {
     grid-template-columns: 1fr;
     text-align: left;
+    padding: 1rem 1.5rem;
   }
   .residents-desc {
     padding: 0;
   }
-
+  .residents {
+    padding: 2rem 0rem;
+  }
+  .number-right {
+    display: none;
+  }
   .residents-sub {
     max-width: 100%;
     border-left: none;

@@ -72,8 +72,6 @@ const Residents = () => {
           <h2 className="residents-heading">
             Words of <em>wisdom.</em>
           </h2>
-        </div>
-        <div className="resident-top-right">
           <h4 className="residents-sub">
             A little advice from the people who matter most -
             <em> our residents</em>.
@@ -84,6 +82,9 @@ const Residents = () => {
             provide care that feels personal, thoughtful, and genuinely
             supportive.
           </p>
+        </div>
+        <div className="resident-top-right">
+          <h1 className="number-right">07</h1>
         </div>
       </div>
 

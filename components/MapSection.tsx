@@ -89,78 +89,78 @@ const MapSection = () => {
   return (
     <section className="map-section" id="find-us" ref={sectionRef}>
       <div className="map-section-inner">
-        {/* ── Map fills left ── */}
-        <div ref={mapContainerRef} className="map-container" />
+      {/* ── Map fills left ── */}
+      <div ref={mapContainerRef} className="map-container" />
 
-        {/* ── Info panel right ── */}
-        <div className="map-panel" ref={cardRef}>
-          <span className="map-panel-label" ref={labelRef}>
-            Find Us
-          </span>
+      {/* ── Info panel right ── */}
+      <div className="map-panel" ref={cardRef}>
+        <span className="map-panel-label" ref={labelRef}>
+          Find Us
+        </span>
 
-          <div className="map-panel-details" ref={headingRef}>
-            <div
-              className="map-panel-item"
-              ref={(el) => {
-                if (el) detailsRef.current[0] = el;
-              }}
-            >
-              <span className="map-panel-item-label">Address</span>
-              <span className="map-panel-item-value">
-                Skippetts Lane West
-                <br />
-                Basingstoke, Hampshire
-                <br />
-                RG21 3NR
-              </span>
-            </div>
-
-            <div
-              className="map-panel-item"
-              ref={(el) => {
-                if (el) detailsRef.current[1] = el;
-              }}
-            >
-              <span className="map-panel-item-label">Phone</span>
-              <span className="map-panel-item-value">01256 478952</span>
-            </div>
-
-            <div
-              className="map-panel-item"
-              ref={(el) => {
-                if (el) detailsRef.current[2] = el;
-              }}
-            >
-              <span className="map-panel-item-label">Visiting Hours</span>
-              <span className="map-panel-item-value">
-                Mon – Sun, 9:00am – 8:00pm
-              </span>
-            </div>
+        <div className="map-panel-details" ref={headingRef}>
+          <div
+            className="map-panel-item"
+            ref={(el) => {
+              if (el) detailsRef.current[0] = el;
+            }}
+          >
+            <span className="map-panel-item-label">Address</span>
+            <span className="map-panel-item-value">
+              Skippetts Lane West
+              <br />
+              Basingstoke, Hampshire
+              <br />
+              RG21 3NR
+            </span>
           </div>
 
-          <a
-            className="map-panel-cta"
-            ref={ctaRef}
-            href={`https://www.google.com/maps/dir/?api=1&destination=${LAT},${LNG}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
+            className="map-panel-item"
+            ref={(el) => {
+              if (el) detailsRef.current[1] = el;
+            }}
           >
-            Get Directions
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3 8h10M9 4l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+            <span className="map-panel-item-label">Phone</span>
+            <span className="map-panel-item-value">01256 478952</span>
+          </div>
+
+          <div
+            className="map-panel-item"
+            ref={(el) => {
+              if (el) detailsRef.current[2] = el;
+            }}
+          >
+            <span className="map-panel-item-label">Visiting Hours</span>
+            <span className="map-panel-item-value">
+              Mon – Sun, 9:00am – 8:00pm
+            </span>
+          </div>
         </div>
+
+        <a
+          className="map-panel-cta"
+          ref={ctaRef}
+          href={`https://www.google.com/maps/dir/?api=1&destination=${LAT},${LNG}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Directions
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
       </div>
     </section>
   );

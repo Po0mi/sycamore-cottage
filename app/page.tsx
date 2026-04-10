@@ -22,8 +22,8 @@ export default async function Home() {
       <QuoteBanner />
       <Residents />
       <Testimonials />
-      <MapSection />
       <Contact contact={contact} />
+      <MapSection />
     </>
   );
 }
