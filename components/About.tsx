@@ -66,9 +66,10 @@ const About = () => {
       </div>
 
       <p className="about-sub">
-        Our trained healthcare professionals ensure each resident has a
-        personalised, clinically relevant care plan, treating everyone as an
-        individual with a full life history.
+        Our trained healthcare professionals create personalised, clinically
+        informed care plans for every resident, recognising each individual not
+        just for their needs, but for their unique life story, preferences, and
+        experiences.
       </p>
 
       <div className="about-features">

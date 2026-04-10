@@ -8,6 +8,7 @@ import Residents from "@/components/Residents";
 import Testimonials from "@/components/Testimonials";
 import MapSection from "@/components/MapSection";
 import Contact from "@/components/Contact";
+import CqcQuotes from "@/components/CqcQuotes";
 
 export const revalidate = 0;
 
@@ -21,6 +22,7 @@ export default async function Home() {
       <About />
       <QuoteBanner />
       <Residents />
+      <CqcQuotes />
       <Testimonials />
       <Contact contact={contact} />
       <MapSection />

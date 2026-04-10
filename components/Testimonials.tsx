@@ -50,61 +50,59 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
   return (
     <section className="testimonials" id="testimonials" ref={sectionRef}>
-      {/* ── Header band ── */}
-      <div className="testimonials-band">
-        <div className="testimonials-label" ref={labelRef}>
-          <span className="testimonials-label-text">What people say</span>
-        </div>
-        <div className="testimonials-band-inner">
+      {/* ── Header ── */}
+      <div className="testimonials-header">
+        <div>
+          <div className="testimonials-label" ref={labelRef}>
+            <span className="testimonials-label-text">What people say</span>
+          </div>
           <h2 className="testimonials-heading" ref={headingRef}>
             <em>Trusted</em>
             <br />
             by families across Hampshire.
           </h2>
-          <div className="testimonials-rating" ref={ratingsRef}>
-            <span className="testimonials-rating-num">9.8</span>
-            <div className="testimonials-rating-meta">
-              <span className="testimonials-rating-source">carehome.co.uk</span>
-              <span className="testimonials-rating-cqc">CQC Regulated</span>
-            </div>
+        </div>
+
+        <div className="testimonials-rating-block" ref={ratingsRef}>
+          <span className="testimonials-rating-num">9.8</span>
+          <div className="testimonials-rating-meta">
+            <span className="testimonials-rating-source">carehome.co.uk</span>
+            <span className="testimonials-rating-cqc">CQC Regulated</span>
           </div>
         </div>
       </div>
 
-      {/* ── Body ── */}
-      <div className="testimonials-body">
-        {/* Featured — white card */}
-        <div className="testimonials-featured-card" ref={featuredRef}>
-          <div className="testimonials-featured-pill">
-            <span className="testimonials-featured-pill-dot" />
-            CQC Report
-          </div>
-          <p className="testimonials-featured-quote">
-            {featured?.quote ?? FALLBACK_FEATURED.quote}
-          </p>
-          <span className="testimonials-featured-source">
-            {featured?.source ?? FALLBACK_FEATURED.source}
-          </span>
+      {/* ── Featured — full-width dark card ── */}
+      <div className="testimonials-featured-card" ref={featuredRef}>
+        <div className="testimonials-featured-pill">
+          <span className="testimonials-featured-pill-dot" />
+          CQC Report
         </div>
+        <p className="testimonials-featured-quote">
+          {featured?.quote ?? FALLBACK_FEATURED.quote}
+        </p>
+        <span className="testimonials-featured-source">
+          {featured?.source ?? FALLBACK_FEATURED.source}
+        </span>
+      </div>
 
-        {/* Mini cards */}
-        <div className="testimonials-cards-row">
-          {mini.map(({ source, quote, author }, index) => (
-            <div
-              key={author}
-              className="testimonials-card"
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el;
-              }}
-            >
-              <p className="testimonials-card-quote">"{quote}"</p>
-              <div className="testimonials-card-footer">
-                <span className="testimonials-card-author">{author}</span>
-                <span className="testimonials-card-source">{source}</span>
-              </div>
+      {/* ── Mini cards ── */}
+      <div className="testimonials-cards-row">
+        {mini.map(({ source, quote, author }, index) => (
+          <div
+            key={author}
+            className="testimonials-card"
+            ref={(el) => {
+              if (el) cardsRef.current[index] = el;
+            }}
+          >
+            <p className="testimonials-card-quote">"{quote}"</p>
+            <div className="testimonials-card-footer">
+              <span className="testimonials-card-author">{author}</span>
+              <span className="testimonials-card-source">{source}</span>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

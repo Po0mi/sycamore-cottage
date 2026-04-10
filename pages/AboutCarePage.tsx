@@ -15,6 +15,7 @@ interface TeamMember {
   initials: string;
   name: string;
   role: string;
+  order?: number;
 }
 
 interface Value {
@@ -79,7 +80,6 @@ const AboutPage = ({ team }: AboutPageProps) => {
 
   return (
     <div className="about-page">
-      {/* ── Band 1: Ink hero ── */}
       <section className="about-hero" ref={heroRef}>
         <div className="about-hero-bg-text" ref={heroBgTextRef}>
           Sycamore
@@ -88,6 +88,7 @@ const AboutPage = ({ team }: AboutPageProps) => {
         <div className="about-hero-inner">
           <div className="about-hero-left">
             <div className="about-hero-label" ref={heroLabelRef}>
+              <span className="about-hero-label-line" />
               <span className="about-hero-label-text">About Us</span>
             </div>
 
@@ -131,113 +132,118 @@ const AboutPage = ({ team }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* ── Band 2: Off-white — Story + Team ── */}
-      <section className="about-story-band">
-        <div className="about-story-inner">
-          <div className="about-story" ref={storyRef}>
-            <div className="about-section-label">
-              <span className="about-section-label-text">Our Story</span>
+      <section className="about-content">
+        <div className="about-content-inner">
+          <div className="about-content-grid">
+            <div className="about-story" ref={storyRef}>
+              <div className="about-section-label">
+                <span className="about-section-label-line" />
+                <span className="about-section-label-text">Our Story</span>
+              </div>
+              <p
+                className="about-story-text"
+                ref={(el) => {
+                  if (el) storyTextRef.current[0] = el;
+                }}
+              >
+                Whether you need respite care or a permanent home, Sycamore
+                Cottage provides everything your loved one needs to live
+                comfortably, safely, and with dignity. We understand that
+                choosing a care home can feel overwhelming. With so many
+                options, it is hard to know where to begin. If you are looking
+                for an independent, well established, and highly recommended
+                home, you have found the right place.
+              </p>
+              <p
+                className="about-story-text"
+                ref={(el) => {
+                  if (el) storyTextRef.current[1] = el;
+                }}
+              >
+                Sycamore Cottage first opened in <em>1996</em> by Anthony
+                Vanderslott, following his career in mental health nursing, and
+                it remains under his dedicated leadership today. Since 2023,
+                Anna Homer has been the registered manager, fully committed to
+                improving the quality of care in the facility. Her methods and
+                steadfast dedication have greatly enhanced the residents'
+                overall well-being and satisfaction.
+              </p>
             </div>
-            <p
-              className="about-story-text"
-              ref={(el) => {
-                if (el) storyTextRef.current[0] = el;
-              }}
-            >
-              Whether you need respite care or a permanent home, Sycamore
-              Cottage provides everything your loved one needs to live
-              comfortably, safely, and with dignity. We understand that choosing
-              a care home can feel overwhelming. If you are looking for an
-              independent, well established, and highly recommended home, you
-              have found the right place.
-            </p>
-            <p
-              className="about-story-text"
-              ref={(el) => {
-                if (el) storyTextRef.current[1] = el;
-              }}
-            >
-              Sycamore Cottage first opened in <em>1996</em> by Anthony
-              Vanderslott, following his career in mental health nursing, and it
-              remains under his dedicated leadership today. Since 2023, Anna
-              Homer has been the registered manager, fully committed to
-              improving the quality of care in the facility.
-            </p>
+
+            <div className="about-team" ref={teamRef}>
+              <div className="about-section-label">
+                <span className="about-section-label-line" />
+                <span className="about-section-label-text">Our Team</span>
+              </div>
+              <div className="about-team-cards">
+                {(team || []).map(({ initials, name, role }, index) => (
+                  <div
+                    key={name}
+                    className="about-team-card"
+                    ref={(el) => {
+                      if (el) teamCardsRef.current[index] = el;
+                    }}
+                  >
+                    <div className="about-team-avatar">{initials}</div>
+                    <div className="about-team-info">
+                      <h4 className="about-team-name">{name}</h4>
+                      <span className="about-team-role">{role}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="about-team" ref={teamRef}>
+          <div className="about-values" ref={valuesRef}>
             <div className="about-section-label">
-              <span className="about-section-label-text">Our Team</span>
+              <span className="about-section-label-line" />
+              <span className="about-section-label-text">
+                What We Stand For
+              </span>
             </div>
-            <div className="about-team-cards">
-              {(team || []).map(({ initials, name, role }, index) => (
+            <div className="about-values-grid">
+              {VALUES.map(({ num, title, desc }, index) => (
                 <div
-                  key={name}
-                  className="about-team-card"
+                  key={num}
+                  className="about-value-item"
                   ref={(el) => {
-                    if (el) teamCardsRef.current[index] = el;
+                    if (el) valuesItemsRef.current[index] = el;
                   }}
                 >
-                  <div className="about-team-avatar">{initials}</div>
-                  <div className="about-team-info">
-                    <h4 className="about-team-name">{name}</h4>
-                    <span className="about-team-role">{role}</span>
+                  <span className="about-value-num">{num}</span>
+                  <div className="about-value-body">
+                    <h4 className="about-value-title">{title}</h4>
+                    <p className="about-value-desc">{desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── Band 3: White — Values 4-col grid ── */}
-      <section className="about-values-band" ref={valuesRef}>
-        <div className="about-values-inner">
-          <div className="about-section-label">
-            <span className="about-section-label-text">What We Stand For</span>
-          </div>
-          <div className="about-values-grid">
-            {VALUES.map(({ num, title, desc }, index) => (
-              <div
-                key={num}
-                className="about-value-item"
-                ref={(el) => {
-                  if (el) valuesItemsRef.current[index] = el;
-                }}
+          <div className="about-cta-strip" ref={ctaStripRef}>
+            <p className="about-cta-quote" ref={ctaQuoteRef}>
+              "Care that feels like <em>home.</em>"
+            </p>
+            <Link href="/book-tour" className="about-cta-btn" ref={ctaBtnRef}>
+              Book A Tour
+              <svg
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <span className="about-value-num">{num}</span>
-                <div className="about-value-body">
-                  <h4 className="about-value-title">{title}</h4>
-                  <p className="about-value-desc">{desc}</p>
-                </div>
-              </div>
-            ))}
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* ── Band 4: Ink — CTA ── */}
-      <div className="about-cta-band" ref={ctaStripRef}>
-        <p className="about-cta-quote" ref={ctaQuoteRef}>
-          "Care that feels like <em>home.</em>"
-        </p>
-        <Link href="/book-tour" className="about-cta-btn" ref={ctaBtnRef}>
-          Book A Tour
-          <svg
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
-      </div>
     </div>
   );
 };
