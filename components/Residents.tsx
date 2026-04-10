@@ -75,8 +75,8 @@ const Residents = () => {
         </div>
         <div className="resident-top-right">
           <h4 className="residents-sub">
-            A little advice from the people who matter most, our{" "}
-            <em>residents</em>.
+            A little advice from the people who matter most -
+            <em> our residents</em>.
           </h4>
           <p className="residents-desc">
             We believe the best insights come from those who call this place

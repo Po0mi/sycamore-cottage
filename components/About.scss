@@ -326,10 +326,13 @@
   }
 
   .about-heading {
-    font-size: clamp(3rem, 10vw, 5rem);
+    font-size: clamp(3rem, 10vw, 3rem);
     max-width: 100%;
+    line-height: 1.1;
   }
-
+  .about-heading-faded {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+  }
   .about-sub {
     max-width: 100%;
   }
