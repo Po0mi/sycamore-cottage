@@ -1,152 +1,118 @@
 // ─────────────────────────────────────────
-// Map Section
+// Map Section — Compact
+// Map fills left · info panel right
 // ─────────────────────────────────────────
 .map-section {
-  position: relative;
-  height: 520px;
   font-family: var(--font-body);
-  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  background: var(--off-white);
 }
 
-// ── Full bleed map ─────────────────────
+// ── Inner bordered card ────────────────
+.map-section-inner {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  height: 300px;
+  overflow: hidden;
+  border: 1px solid rgba(17, 19, 24, 0.09);
+}
+
+// ── Map fills left ─────────────────────
 .map-container {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
   height: 100%;
   z-index: 1;
 }
 
-// ── Floating card ──────────────────────
-.map-card {
-  position: absolute;
-  left: clamp(1.5rem, 4vw, 3rem);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 4;
-  background: var(--white);
-  border-radius: 4px;
-  padding: 2rem 2rem 2rem;
-  width: clamp(260px, 28vw, 320px);
+// ── Right info panel ───────────────────
+.map-panel {
+  background: var(--off-white);
+  padding: 2rem 2rem 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: 0 8px 40px rgba(17, 19, 24, 0.14);
+  border-left: 1px solid rgba(17, 19, 24, 0.08);
+  position: relative;
+  z-index: 2;
 }
 
 // ── Label ──────────────────────────────
-.map-card-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.map-card-label-line {
-  width: 20px;
-  height: 1.5px;
-  background: var(--blue);
-  flex-shrink: 0;
-}
-
-.map-card-label-text {
-  font-size: 0.58rem;
+.map-panel-label {
+  font-size: 0.55rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--blue);
+  display: block;
+  margin-bottom: 1.25rem;
 }
 
-// ── Heading ────────────────────────────
-.map-card-heading {
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.map-card-heading em {
-  font-style: italic;
-  color: var(--blue);
-}
-
-// ── Details ────────────────────────────
-.map-card-details {
+// ── Detail items ───────────────────────
+.map-panel-details {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex: 1;
+  margin-bottom: 0.5rem;
 }
 
-.map-card-detail-item {
+.map-panel-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-.map-card-detail-icon {
-  width: 30px;
-  height: 30px;
-  background: var(--blue-light);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--blue);
-
-  svg {
-    width: 13px;
-    height: 13px;
-  }
+.map-panel-item-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
 }
 
-.map-card-detail-body h5 {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 2px;
-}
-
-.map-card-detail-body p {
-  font-size: 0.78rem;
+.map-panel-item-value {
+  font-size: 0.8rem;
+  font-weight: 300;
   color: var(--gray-700);
   line-height: 1.55;
-  font-weight: 300;
 }
 
 // ── CTA ────────────────────────────────
-.map-card-cta {
+.map-panel-cta {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--white);
   background: var(--blue);
-  padding: 0.7rem 1.25rem;
+  padding: 0.6rem 1.1rem;
   border-radius: 3px;
   text-decoration: none;
   align-self: flex-start;
-  transition:
-    background var(--transition),
-    transform var(--transition);
+  margin-top: auto;
+  transition: background 180ms cubic-bezier(0.23, 1, 0.32, 1);
 
   svg {
-    width: 11px;
-    height: 11px;
-    transition: transform var(--transition);
+    width: 10px;
+    height: 10px;
+    transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  &:hover {
-    background: color-mix(in srgb, var(--blue) 80%, black);
-    transform: translateY(-1px);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: color-mix(in srgb, var(--blue) 80%, black);
 
-    svg {
-      transform: translateX(3px);
+      svg {
+        transform: translateX(3px);
+      }
     }
+  }
+
+  &:active {
+    transform: scale(0.97);
   }
 }
 
@@ -243,44 +209,48 @@
 // Responsive
 // ─────────────────────────────────────────
 @media (max-width: 1024px) {
-  .map-section {
-    height: 480px;
+  .map-section-inner {
+    grid-template-columns: 1fr 260px;
   }
 }
 
 @media (max-width: 640px) {
   .map-section {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
+    padding: 1rem clamp(1rem, 4vw, 1.5rem);
   }
 
-  .map-container {
-    position: relative !important;
-    inset: auto !important;
+  .map-section-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px auto;
+    height: auto;
+  }
+
+  .map-panel {
+    border-left: none;
+    border-top: 1px solid rgba(17, 19, 24, 0.08);
+    padding: 1.25rem 1.25rem 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .map-panel-label {
     width: 100%;
-    height: 260px;
-    flex-shrink: 0;
-    z-index: 1;
+    margin-bottom: 0;
   }
-  .map-card-heading {
-    text-align: center;
-  }
-  .map-card-cta {
-    align-self: center;
-  }
-  .map-card {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
+
+  .map-panel-details {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    flex: unset;
     width: 100%;
-    border-radius: 0;
-    box-shadow: none;
-    border-top: 1px solid var(--gray-100);
-    background: var(--off-white);
-    z-index: 2;
-    align-items: center;
+  }
+
+  .map-panel-cta {
+    margin-top: 0;
+    width: 100%;
+    justify-content: center;
   }
 }

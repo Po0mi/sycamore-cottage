@@ -4,7 +4,7 @@
 .residents {
   background: var(--off-white);
   font-family: var(--font-body);
-  padding: clamp(3.5rem, 8vw, 5.5rem) 0 0;
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(1.5rem, 5vw, 3.5rem);
 }
 
 // ── Top header — 2-col inline ──────────

@@ -1,18 +1,20 @@
 // ─────────────────────────────────────────
-// Testimonials
+// Testimonials — Option C
+// Ink header band · white featured + cards
 // ─────────────────────────────────────────
 .testimonials {
   background: var(--off-white);
-  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.5rem, 5vw, 3.5rem)
-    clamp(3.5rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3.5rem);
   font-family: var(--font-body);
+  padding-bottom: clamp(1rem, 5vw, 1rem);
 }
 
-// ── Header ─────────────────────────────
-.testimonials-header {
-  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+// ── Header band — matches Residents ────
+.testimonials-band {
+  background: var(--ink);
+  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3.5rem);
 }
 
+// ── Label ──────────────────────────────
 .testimonials-label {
   margin-bottom: 0.875rem;
 }
@@ -22,103 +24,50 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--blue-mid);
 }
 
+// ── Band inner — heading + rating ──────
+.testimonials-band-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 2rem;
+}
+
+// ── Heading ────────────────────────────
 .testimonials-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.93;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: rgba(255, 255, 255, 0.92);
 
   em {
     font-style: italic;
-    color: var(--blue);
-    font-size: clamp(2.25rem, 5.5vw, 5.5rem);
+    color: var(--blue-mid);
+    font-size: clamp(2rem, 4vw, 5rem);
   }
 }
 
-// ── Featured — full-width dark card ────
-.testimonials-featured-card {
-  background: var(--ink);
-  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 2.75rem);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonials-featured-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.testimonials-featured-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  padding: 0.3rem 0.875rem;
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  width: fit-content;
-}
-
-.testimonials-featured-pill-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--blue);
-  flex-shrink: 0;
-}
-
-.testimonials-featured-quote {
-  font-family: var(--font-accent);
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.65;
-  font-weight: 200;
-  max-width: 72ch;
-}
-
-.testimonials-featured-source {
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.22);
-}
-
-// ── Rating — sits right inside dark card
-.testimonials-featured-right {
+// ── Rating block ───────────────────────
+.testimonials-rating {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 2rem;
   flex-shrink: 0;
-  padding-left: clamp(1.5rem, 3vw, 2.5rem);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.1rem;
 }
 
 .testimonials-rating-num {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 400;
   font-style: italic;
   color: var(--blue);
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-right: 1rem;
 }
 
 .testimonials-rating-meta {
@@ -132,7 +81,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.28);
 }
 
 .testimonials-rating-cqc {
@@ -142,6 +91,63 @@
   text-transform: uppercase;
   color: var(--blue);
   opacity: 0.6;
+}
+
+// ── Body ───────────────────────────────
+.testimonials-body {
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3.5rem);
+}
+
+// ── Featured card — white ──────────────
+.testimonials-featured-card {
+  background: var(--white);
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.testimonials-featured-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: 999px;
+  padding: 0.3rem 0.875rem;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(37, 99, 235, 0.65);
+  width: fit-content;
+}
+
+.testimonials-featured-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+.testimonials-featured-quote {
+  font-family: var(--font-accent);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-style: italic;
+  color: var(--gray-700);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 80ch;
+}
+
+.testimonials-featured-source {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
 }
 
 // ── Mini cards — 2-col row ─────────────
@@ -160,10 +166,16 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  transition: background 0.2s ease;
+  cursor: default;
 
-  &:hover {
-    background: var(--off-white);
+  // Strong ease-out — Emil
+  transition: background 180ms cubic-bezier(0.23, 1, 0.32, 1);
+
+  // Gate hover — no false triggers on touch
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--off-white);
+    }
   }
 }
 
@@ -182,7 +194,7 @@
   flex-direction: column;
   gap: 3px;
   padding-top: 1rem;
-  border-top: 1px solid var(--gray-50);
+  border-top: 1px solid rgba(17, 19, 24, 0.07);
 }
 
 .testimonials-card-author {
@@ -198,41 +210,32 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--blue);
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 // ─────────────────────────────────────────
 // Responsive
 // ─────────────────────────────────────────
 @media (max-width: 1024px) {
-  .testimonials-featured-card {
+  .testimonials-band-inner {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
-  .testimonials-featured-right {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 1.5rem;
-    flex-direction: row;
-    align-items: baseline;
+  .testimonials-rating {
+    align-self: flex-start;
   }
 }
 
 @media (max-width: 640px) {
-  .testimonials-heading em {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
-  }
-
-  .testimonials-featured-card {
-    padding: 1.75rem 1.5rem;
-  }
-
   .testimonials-cards-row {
     grid-template-columns: 1fr;
   }
-  .testimonials-rating-meta {
-    align-self: center;
+
+  .testimonials-body {
+    padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+  }
+  .testimonials-heading {
+    line-height: 1.2;
   }
 }
