@@ -5,12 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const useCqcQuotesAnimation = () => {
-  const sectionRef = useRef(null);
-  const labelRef = useRef(null);
-  const headingRef = useRef(null);
-  const pillRef = useRef(null);
-  const subRef = useRef(null);
-  const itemsRef = useRef([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const pillRef = useRef<HTMLDivElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const itemsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
