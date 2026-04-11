@@ -43,73 +43,75 @@ const About = () => {
 
   return (
     <section className="about" id="about" ref={sectionRef}>
-      {/* Image Bleed - Right Side */}
-      <div className="about-image-bleed">
-        <div className="about-image-inner">
-          <Image
-            src={Elder}
-            alt="Elderly resident at Sycamore Cottage enjoying a peaceful moment"
-            fill
-            priority
-          />
+      <div className="about-container">
+        {/* Image Bleed - Right Side */}
+        <div className="about-image-bleed">
+          <div className="about-image-inner">
+            <Image
+              src={Elder}
+              alt="Elderly resident at Sycamore Cottage enjoying a peaceful moment"
+              fill
+              priority
+            />
+          </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="about-label">
-        <span className="about-label-text">Living &amp; Thriving</span>
-      </div>
+        {/* Content */}
+        <div className="about-label">
+          <span className="about-label-text">Living &amp; Thriving</span>
+        </div>
 
-      <div className="about-heading-wrap">
-        <h2 className="about-heading">
-          A little about
-          <span className="about-heading-faded"> what we do</span> at
-          <br />
-          <em>Sycamore</em>{" "}
-          <span className="about-heading-ghost">Cottage </span>
-          <span className="about-heading-faded">care that feels</span>{" "}
-          <em>like home.</em>
-        </h2>
-      </div>
+        <div className="about-heading-wrap">
+          <h2 className="about-heading">
+            A little about
+            <span className="about-heading-faded"> what we do</span> at
+            <br />
+            <em>Sycamore</em>{" "}
+            <span className="about-heading-ghost">Cottage </span>
+            <span className="about-heading-faded">care that feels</span>{" "}
+            <em>like home.</em>
+          </h2>
+        </div>
 
-      <p className="about-sub">
-        Our trained healthcare professionals create personalised, clinically
-        informed care plans for every resident, recognising each individual not
-        just for their needs, but for their unique life story, preferences, and
-        experiences.
-      </p>
+        <p className="about-sub">
+          Our trained healthcare professionals create personalised, clinically
+          informed care plans for every resident, recognising each individual
+          not just for their needs, but for their unique life story,
+          preferences, and experiences.
+        </p>
 
-      <div className="about-features">
-        {FEATURES.map(({ title, short, desc }, i) => {
-          const isOpen = openIndex === i;
-          return (
-            <div
-              key={title}
-              className={`about-feature-item${isOpen ? " is-open" : ""}`}
-            >
-              <button
-                className="about-feature-trigger"
-                onClick={() => toggle(i)}
-                aria-expanded={isOpen}
+        <div className="about-features">
+          {FEATURES.map(({ title, short, desc }, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div
+                key={title}
+                className={`about-feature-item${isOpen ? " is-open" : ""}`}
               >
-                <span className="about-feature-index">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="about-feature-header">
-                  <h4 className="about-feature-title">{title}</h4>
-                  <p className="about-feature-short">{short}</p>
-                </div>
-                <span className="about-feature-toggle" aria-hidden="true">
-                  <span className="about-feature-toggle-icon" />
-                </span>
-              </button>
+                <button
+                  className="about-feature-trigger"
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="about-feature-index">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="about-feature-header">
+                    <h4 className="about-feature-title">{title}</h4>
+                    <p className="about-feature-short">{short}</p>
+                  </div>
+                  <span className="about-feature-toggle" aria-hidden="true">
+                    <span className="about-feature-toggle-icon" />
+                  </span>
+                </button>
 
-              <div className="about-feature-body" aria-hidden={!isOpen}>
-                <div className="about-feature-desc">{desc}</div>
+                <div className="about-feature-body" aria-hidden={!isOpen}>
+                  <div className="about-feature-desc">{desc}</div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

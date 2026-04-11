@@ -15,8 +15,8 @@
   grid-template-columns: 1fr auto;
   align-items: start;
   gap: 3rem;
-  padding: 0 clamp(2rem, 6vw, 10rem) 2.5rem;
-  max-width: 1900px;
+  padding: 0 clamp(1rem, 6vw, 1rem) 2.5rem;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -250,7 +250,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 5px;
   animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

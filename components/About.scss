@@ -9,17 +9,23 @@
   padding: clamp(3.5rem, 8vw, 5.5rem) clamp(2rem, 6vw, 10rem)
     clamp(4rem, 8vw, 6rem);
   font-family: var(--font-body);
-  max-width: 1900px;
+}
+
+.about-container {
+  max-width: 1440px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 // ── Image bleed ────────────────────────
 .about-image-bleed {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -10rem;
+  top: 10rem;
   bottom: 0;
-  width: 45%;
+  width: 60%;
+  height: 100%;
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
@@ -49,7 +55,7 @@
   top: 0;
   bottom: 0;
   width: 70%;
-  background: linear-gradient(to left, rgb(255, 255, 255, 0.6), transparent);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.6), transparent);
   z-index: 2;
   pointer-events: none;
 }
@@ -85,7 +91,7 @@
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--ink);
-  max-width: 55%;
+  max-width: 70%;
 
   em {
     font-style: italic;
@@ -109,7 +115,7 @@
   font-weight: 300;
   line-height: 1.7;
   color: var(--gray-600);
-  max-width: 70ch;
+  max-width: 80ch;
   margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;

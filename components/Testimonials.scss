@@ -4,7 +4,8 @@
 
 .testimonials {
   background: var(--off-white);
-  padding: clamp(4rem, 8vw, 6rem) clamp(2rem, 6vw, 10rem) clamp(4rem, 8vw, 6rem);
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(2rem, 6vw, 10rem)
+    clamp(4rem, 8vw, 6rem);
   font-family: var(--font-body);
   position: relative;
   overflow: hidden;
@@ -28,7 +29,7 @@
 }
 
 .testimonials-container {
-  max-width: 1800px;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -106,6 +107,7 @@
 .testimonials-rating-meta {
   display: flex;
   flex-direction: column;
+  text-align: left;
   gap: 3px;
 }
 
