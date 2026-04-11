@@ -21,11 +21,11 @@ export default async function Home() {
       <Marquee />
       <About />
       <QuoteBanner />
-      <Residents />
-      <CqcQuotes />
       <Testimonials />
-      <Contact contact={contact} />
+      <CqcQuotes />
+      <Residents />
       <MapSection />
+      <Contact contact={contact} />
     </>
   );
 }

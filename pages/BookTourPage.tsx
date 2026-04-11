@@ -85,10 +85,6 @@ const BookTourPage = () => {
   return (
     <div className="book-tour" ref={sectionRef}>
       <section className="book-tour-section">
-        <div className="book-tour-bg-text" ref={bgTextRef}>
-          Tour
-        </div>
-
         <div className="book-tour-inner">
           <div className="book-tour-label" ref={labelRef}>
             <span

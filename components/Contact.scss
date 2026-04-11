@@ -1,27 +1,41 @@
+// ─────────────────────────────────────────
+// Contact — CTA-Focused Organic-Clinical
+// ─────────────────────────────────────────
+
 .contact {
   background: var(--ink);
-  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+  padding: clamp(4rem, 8vw, 6rem) clamp(2rem, 6vw, 4rem);
   position: relative;
   overflow: hidden;
   font-family: var(--font-body);
+
+  // Flowing wave background
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(37, 99, 235, 0.015) 50%,
+        transparent 100%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(147, 180, 247, 0.012) 50%,
+        transparent 100%
+      );
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
-.contact-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-display);
-  font-size: clamp(8rem, 20vw, 18rem);
-  font-style: italic;
-  color: rgba(147, 180, 247, 0.04);
-  pointer-events: none;
-  white-space: nowrap;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  user-select: none;
-}
-
+// ── Inner Container ─────────────────────
 .contact-inner {
   max-width: 540px;
   margin: 0 auto;
@@ -30,29 +44,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.75rem;
+  gap: 2rem;
   text-align: center;
 }
 
-.contact-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+// ── Label ───────────────────────────────
 
 .contact-label-text {
-  font-size: 0.58rem;
+  font-size: 0.5625rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--blue-mid);
+}
+
+// ── Header ──────────────────────────────
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .contact-heading {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 400;
-  color: var(--white);
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
 
@@ -62,11 +80,58 @@
   }
 }
 
+.contact-sub {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 420px;
+  font-weight: 300;
+  align-self: center;
+}
+
+// ── CTA Button ──────────────────────────
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem 1.25rem;
+  background: var(--blue);
+  border-radius: 5px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  svg {
+    width: 10px;
+    height: 10px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: color-mix(in srgb, var(--blue) 85%, black);
+
+      svg {
+        transform: translateX(3px);
+      }
+    }
+  }
+}
+
+// ── Contact Details ─────────────────────
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 0.75rem;
   width: 100%;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .contact-detail-item {
@@ -74,65 +139,176 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  font-size: 0.85rem;
-  transition: color var(--transition);
+  font-size: 0.75rem;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  svg {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-    color: var(--blue-mid);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
 
-  &:hover {
-    color: var(--white);
+      .contact-detail-icon {
+        color: var(--white);
+      }
+    }
   }
 }
 
-.contact-stats {
+.contact-detail-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--blue-mid);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ── Trust Badges ────────────────────────
+.contact-badges {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.contact-badge {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding-top: 2rem;
+  gap: 6px;
 }
 
-.contact-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 2rem;
-
-  strong {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--blue-mid);
-    line-height: 1;
-    display: block;
-  }
-
-  span {
-    font-size: 0.55rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
-    margin-top: 4px;
-  }
+.contact-badge-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--blue-mid);
+  line-height: 1;
 }
 
-.contact-stat-div {
+.contact-badge-label {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-badge-divider {
   width: 1px;
-  height: 28px;
+  height: 20px;
   background: rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
 }
 
+// ─────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .contact-inner {
+    gap: 1.75rem;
+  }
+
+  .contact-header {
+    gap: 0.625rem;
+  }
+
+  .contact-sub {
+    font-size: 0.75rem;
+  }
+
+  .contact-cta {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.75rem;
+  }
+
+  .contact-details {
+    padding: 1.25rem 0;
+  }
+
+  .contact-detail-item {
+    font-size: 0.6875rem;
+  }
+
+  .contact-detail-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
 @media (max-width: 640px) {
-  .contact-stat {
-    padding: 0 1.25rem;
+  .contact {
+    padding: 3rem 1.25rem;
+  }
+
+  .contact-label {
+    padding: 4px 12px;
+  }
+
+  .contact-label-text {
+    font-size: 0.5rem;
+  }
+
+  .contact-inner {
+    gap: 1.5rem;
+  }
+
+  .contact-header {
+    gap: 0.5rem;
+  }
+
+  .contact-heading {
+    letter-spacing: -0.015em;
+  }
+
+  .contact-sub {
+    font-size: 0.6875rem;
+    max-width: 100%;
+  }
+
+  .contact-cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.6875rem;
+  }
+
+  .contact-details {
+    gap: 0.625rem;
+    padding: 1rem 0;
+  }
+
+  .contact-detail-item {
+    font-size: 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .contact-detail-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .contact-badges {
+    gap: 1.25rem;
+  }
+
+  .contact-badge-value {
+    font-size: 1.125rem;
+  }
+
+  .contact-badge-label {
+    font-size: 0.4375rem;
+  }
+
+  .contact-badge-divider {
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-cta {
+    width: 100%;
+    max-width: 280px;
   }
 }

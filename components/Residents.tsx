@@ -57,6 +57,18 @@ const RESIDENTS: Resident[] = [
   },
 ];
 
+const QuoteIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className="residents-card-quote-icon"
+  >
+    <path d="M6 10c0-2 1.5-3.5 3.5-3.5S13 8 13 10s-1.5 3.5-3.5 3.5V16c4 0 7-3 7-6s-3-6-7-6-7 3-7 6h3zm-6 0c0-2 1.5-3.5 3.5-3.5S7 8 7 10s-1.5 3.5-3.5 3.5V16c4 0 7-3 7-6s-3-6-7-6-7 3-7 6h3z" />
+  </svg>
+);
+
 const Residents = () => {
   const [active, setActive] = useState<Resident | null>(null);
   const { sectionRef, topRef, stripRef } = useResidentsAnimation();
@@ -69,22 +81,23 @@ const Residents = () => {
           <div className="residents-label">
             <span className="residents-label-text">From Our Residents</span>
           </div>
+
           <h2 className="residents-heading">
-            Words of <em>wisdom.</em>
+            Words of <em>wisdom</em>
           </h2>
-          <h4 className="residents-sub">
-            A little advice from the people who matter most -
-            <em> our residents</em>.
-          </h4>
-          <p className="residents-desc">
-            We believe the best insights come from those who call this place
-            home. Their experiences shape how we grow, improve, and continue to
-            provide care that feels personal, thoughtful, and genuinely
-            supportive.
+
+          <p className="residents-sub">
+            A little advice from the people who matter most — our residents.
+            Their experiences shape how we grow and continue to provide
+            genuinely supportive care.
           </p>
         </div>
-        <div className="resident-top-right">
-          <h1 className="number-right">07</h1>
+
+        <div className="residents-top-right">
+          <div className="residents-count-card">
+            <div className="residents-count-number">07</div>
+            <div className="residents-count-label">Residents</div>
+          </div>
         </div>
       </div>
 
@@ -97,6 +110,7 @@ const Residents = () => {
             onClick={() => setActive(resident)}
           >
             <div className="residents-card-img">
+              <div className="residents-card-img-overlay" />
               <Image
                 src={resident.image}
                 alt={`${resident.name}, age ${resident.age}`}
@@ -110,12 +124,17 @@ const Residents = () => {
                 }}
               />
             </div>
-            <div className="residents-card-footer">
-              <span className="residents-card-name">{resident.name}</span>
-              <span className="residents-card-age">Age {resident.age}</span>
-              <span className="residents-card-quote">
-                &ldquo;{resident.quote}&rdquo;
-              </span>
+
+            <div className="residents-card-content">
+              <div className="residents-card-header">
+                <h3 className="residents-card-name">{resident.name}</h3>
+                <span className="residents-card-age">Age {resident.age}</span>
+              </div>
+
+              <blockquote className="residents-card-quote-block">
+                <QuoteIcon />
+                <p className="residents-card-quote">{resident.quote}</p>
+              </blockquote>
             </div>
           </button>
         ))}
@@ -131,6 +150,7 @@ const Residents = () => {
             <button
               className="residents-modal-close"
               onClick={() => setActive(null)}
+              aria-label="Close modal"
             >
               <svg
                 viewBox="0 0 16 16"
@@ -145,6 +165,7 @@ const Residents = () => {
                 />
               </svg>
             </button>
+
             <div className="residents-modal-img">
               <Image
                 src={active.image}
@@ -159,12 +180,14 @@ const Residents = () => {
                 }}
               />
             </div>
+
             <div className="residents-modal-body">
-              <span className="residents-modal-name">{active.name}</span>
+              <h3 className="residents-modal-name">{active.name}</h3>
               <span className="residents-modal-age">Age {active.age}</span>
-              <p className="residents-modal-quote">
-                &ldquo;{active.quote}&rdquo;
-              </p>
+              <blockquote className="residents-modal-quote-block">
+                <QuoteIcon />
+                <p className="residents-modal-quote">{active.quote}</p>
+              </blockquote>
             </div>
           </div>
         </div>

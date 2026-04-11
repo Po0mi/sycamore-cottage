@@ -1,109 +1,155 @@
 // ─────────────────────────────────────────
-// Map Section — Compact
-// Map fills left · info panel right
+// Map Section — Full Bleed Split Organic-Clinical
 // ─────────────────────────────────────────
+
 .map-section {
   font-family: var(--font-body);
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 3.5rem);
-  background: var(--off-white);
-}
-
-// ── Inner bordered card ────────────────
-.map-section-inner {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  height: 400px;
-  overflow: hidden;
-  border: 1px solid rgba(17, 19, 24, 0.09);
-}
-
-// ── Map fills left ─────────────────────
-.map-container {
   position: relative;
+  height: 520px;
+  overflow: hidden;
+}
+
+// ── Full Bleed Map ──────────────────────
+.map-container {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: var(--gray-50);
 }
 
-// ── Right info panel ───────────────────
-.map-panel {
-  background: var(--off-white);
-  padding: 2rem 2rem 1.75rem;
+// ── Floating Card ───────────────────────
+.map-floating-card {
+  position: absolute;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 5px;
+  padding: 2.25rem;
+  box-shadow:
+    0 8px 24px rgba(17, 19, 24, 0.12),
+    0 2px 6px rgba(17, 19, 24, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid rgba(17, 19, 24, 0.08);
-  position: relative;
-  z-index: 2;
+  gap: 1.25rem;
 }
 
-// ── Label ──────────────────────────────
-.map-panel-label {
-  font-size: 0.55rem;
+// ── Badge ───────────────────────────────
+.map-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+}
+
+.map-card-badge-text {
+  font-size: 0.5rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blue);
-  display: block;
-  margin-bottom: 1.25rem;
 }
 
-// ── Detail items ───────────────────────
-.map-panel-details {
+// ── Heading ─────────────────────────────
+.map-card-heading {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+
+  em {
+    font-style: italic;
+    color: var(--blue);
+  }
+}
+
+// ── Details ─────────────────────────────
+.map-card-details {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  flex: 1;
-  margin-bottom: 0.6rem;
 }
 
-.map-panel-item {
+.map-card-item {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.map-card-item-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--blue-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    color: var(--blue);
+  }
+}
+
+.map-card-item-content {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
+  flex: 1;
 }
 
-.map-panel-item-label {
-  font-size: 0.55rem;
+.map-card-item-label {
+  font-size: 0.5625rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray-400);
 }
 
-.map-panel-item-value {
-  font-size: 0.8rem;
-  font-weight: 300;
+.map-card-item-value {
+  font-size: 0.75rem;
   color: var(--gray-700);
-  line-height: 1.55;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
-// ── CTA ────────────────────────────────
-.map-panel-cta {
+// ── CTA Button ──────────────────────────
+.map-card-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
+  padding: 0.75rem 1.25rem;
   background: var(--blue);
-  padding: 0.6rem 1.1rem;
-  border-radius: 3px;
+  border-radius: 5px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--white);
   text-decoration: none;
-  align-self: flex-start;
-  margin-top: auto;
-  transition: background 180ms cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   svg {
     width: 10px;
     height: 10px;
-    transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background: color-mix(in srgb, var(--blue) 80%, black);
+      background: color-mix(in srgb, var(--blue) 85%, black);
 
       svg {
         transform: translateX(3px);
@@ -112,11 +158,11 @@
   }
 
   &:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
   }
 }
 
-// ── Custom pin ─────────────────────────
+// ── Custom Pin ──────────────────────────
 .map-custom-pin {
   background: none !important;
   border: none !important;
@@ -132,12 +178,12 @@
 }
 
 .map-pin-dot {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   background: var(--blue);
   border-radius: 50%;
-  border: 3px solid var(--white);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+  border: 4px solid var(--white);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.4);
   position: relative;
   z-index: 2;
 }
@@ -147,16 +193,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(37, 99, 235, 0.15);
-  animation: pinPulse 2.5s ease-out infinite;
+  animation: pinPulse 2s ease-out infinite;
   z-index: 1;
 }
 
 .map-pin-pulse-2 {
-  animation-delay: 1.25s;
+  animation-delay: 1s;
 }
 
 @keyframes pinPulse {
@@ -165,17 +211,19 @@
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) scale(2.5);
+    transform: translate(-50%, -50%) scale(2);
     opacity: 0;
   }
 }
 
-// ── Popup ──────────────────────────────
+// ── Popup ───────────────────────────────
 .map-popup-wrap .leaflet-popup-content-wrapper {
-  border-radius: 4px;
-  box-shadow: 0 4px 20px rgba(17, 19, 24, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(17, 19, 24, 0.1);
   padding: 0;
-  border: 1px solid var(--gray-100);
+  border: 1px solid rgba(17, 19, 24, 0.06);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 .map-popup-wrap .leaflet-popup-content {
@@ -183,7 +231,7 @@
 }
 
 .map-popup-wrap .leaflet-popup-tip {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .map-popup {
@@ -194,13 +242,13 @@
   font-family: var(--font-body);
 
   strong {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--ink);
   }
 
   span {
-    font-size: 0.7rem;
+    font-size: 0.625rem;
     color: var(--gray-400);
   }
 }
@@ -208,49 +256,119 @@
 // ─────────────────────────────────────────
 // Responsive
 // ─────────────────────────────────────────
+
 @media (max-width: 1024px) {
-  .map-section-inner {
-    grid-template-columns: 1fr 260px;
+  .map-floating-card {
+    width: 300px;
+    right: 2rem;
+    padding: 2rem;
+  }
+
+  .map-card-heading {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-section {
+    height: auto;
+  }
+
+  .map-container {
+    position: relative;
+    height: 320px;
+  }
+
+  .map-floating-card {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 640px) {
-  .map-section {
-    padding: 1rem clamp(1rem, 4vw, 1.5rem);
+  .map-container {
+    height: 280px;
   }
 
-  .map-section-inner {
-    grid-template-columns: 1fr;
-    grid-template-rows: 200px auto;
-    height: auto;
-  }
-
-  .map-panel {
-    border-left: none;
-    border-top: 1px solid rgba(17, 19, 24, 0.08);
-    padding: 1.25rem 1.25rem 1.5rem;
-    flex-direction: row;
-    flex-wrap: wrap;
+  .map-floating-card {
+    padding: 1.75rem 1.25rem;
     gap: 1rem;
-    align-items: flex-start;
   }
 
-  .map-panel-label {
-    width: 100%;
-    margin-bottom: 0;
+  .map-card-badge {
+    padding: 4px 9px;
   }
 
-  .map-panel-details {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.75rem 2rem;
-    flex: unset;
-    width: 100%;
+  .map-card-badge-text {
+    font-size: 0.4375rem;
   }
 
-  .map-panel-cta {
-    margin-top: 0;
+  .map-card-heading {
+    font-size: 1.125rem;
+  }
+
+  .map-card-details {
+    gap: 0.875rem;
+  }
+
+  .map-card-item-icon {
+    width: 30px;
+    height: 30px;
+
+    svg {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .map-card-item-label {
+    font-size: 0.5rem;
+  }
+
+  .map-card-item-value {
+    font-size: 0.6875rem;
+  }
+
+  .map-card-cta {
+    padding: 0.6875rem 1.125rem;
+    font-size: 0.625rem;
+
+    svg {
+      width: 9px;
+      height: 9px;
+    }
+  }
+
+  .map-pin-dot {
+    width: 16px;
+    height: 16px;
+    border: 3px solid var(--white);
+  }
+
+  .map-pin-pulse {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    height: 240px;
+  }
+
+  .map-floating-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .map-card-cta {
     width: 100%;
-    justify-content: center;
+  }
+  .map-floating-card {
+    bottom: 0;
   }
 }

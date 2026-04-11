@@ -12,6 +12,8 @@ const useContactAnimation = () => {
   const labelRef = useRef<HTMLDivElement>(null);
   const labelLinesRef = useRef<HTMLSpanElement[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null); // ← Added ctaRef
+  const detailsContainerRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLAnchorElement[]>([]);
   const statsRef = useRef<HTMLDivElement>(null);
   const statItemsRef = useRef<HTMLDivElement[]>([]);
@@ -22,6 +24,7 @@ const useContactAnimation = () => {
     const label = labelRef.current;
     const labelLines = labelLinesRef.current;
     const heading = headingRef.current;
+    const cta = ctaRef.current; // ← Added
     const details = detailsRef.current;
     const stats = statsRef.current;
     const statItems = statItemsRef.current;
@@ -30,7 +33,7 @@ const useContactAnimation = () => {
 
     gsap.set(bgText, { opacity: 0, scale: 0.9 });
     gsap.set(labelLines, { scaleX: 0, transformOrigin: "center" });
-    gsap.set([label, heading], { opacity: 0, y: 30 });
+    gsap.set([label, heading, cta], { opacity: 0, y: 30 }); // ← Added cta
     gsap.set(details, { opacity: 0, x: -40 });
     gsap.set(stats, { opacity: 0, y: 30 });
     gsap.set(statItems, { opacity: 0, y: 20 });
@@ -66,6 +69,11 @@ const useContactAnimation = () => {
         "-=0.5",
       )
       .to(
+        cta, // ← Added cta animation
+        { opacity: 1, y: 0, duration: 0.5, ease: "back.out(0.5)" },
+        "-=0.3",
+      )
+      .to(
         details,
         {
           opacity: 1,
@@ -74,7 +82,7 @@ const useContactAnimation = () => {
           stagger: 0.15,
           ease: "back.out(0.5)",
         },
-        "-=0.5",
+        "-=0.3",
       )
       .to(
         stats,
@@ -118,6 +126,8 @@ const useContactAnimation = () => {
     labelRef,
     labelLinesRef,
     headingRef,
+    ctaRef, // ← Added
+    detailsContainerRef,
     detailsRef,
     statsRef,
     statItemsRef,

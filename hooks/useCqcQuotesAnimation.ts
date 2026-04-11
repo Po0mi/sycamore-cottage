@@ -13,40 +13,65 @@ const useCqcQuotesAnimation = () => {
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.set(
-        [labelRef.current, headingRef.current, pillRef.current, subRef.current],
-        { opacity: 0, y: 20 },
-      );
+    // Store refs in local variables to avoid null issues
+    const section = sectionRef.current;
+    const label = labelRef.current;
+    const heading = headingRef.current;
+    const pill = pillRef.current;
+    const sub = subRef.current;
+    const items = itemsRef.current.filter(Boolean);
 
-      gsap.set(itemsRef.current.filter(Boolean), { opacity: 0, y: 24 });
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      // Only set/get animations if elements exist
+      if (label) gsap.set(label, { opacity: 0, y: 20 });
+      if (heading) gsap.set(heading, { opacity: 0, y: 20 });
+      if (pill) gsap.set(pill, { opacity: 0, y: 20 });
+      if (sub) gsap.set(sub, { opacity: 0, y: 20 });
+      if (items.length) gsap.set(items, { opacity: 0, y: 24 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: section,
           start: "top 80%",
           toggleActions: "play none none none",
         },
       });
 
-      tl.to(labelRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      })
-        .to(
-          headingRef.current,
+      if (label) {
+        tl.to(label, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
+
+      if (heading) {
+        tl.to(
+          heading,
           { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
           "-=0.3",
-        )
-        .to(
-          [pillRef.current, subRef.current],
+        );
+      }
+
+      // Create an array of elements to animate together
+      const headerElements = [];
+      if (pill) headerElements.push(pill);
+      if (sub) headerElements.push(sub);
+
+      if (headerElements.length) {
+        tl.to(
+          headerElements,
           { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
           "-=0.3",
-        )
-        .to(
-          itemsRef.current.filter(Boolean),
+        );
+      }
+
+      if (items.length) {
+        tl.to(
+          items,
           {
             opacity: 1,
             y: 0,
@@ -56,6 +81,7 @@ const useCqcQuotesAnimation = () => {
           },
           "-=0.2",
         );
+      }
     }, sectionRef);
 
     return () => ctx.revert();

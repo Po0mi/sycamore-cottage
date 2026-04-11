@@ -50,59 +50,73 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
   return (
     <section className="testimonials" id="testimonials" ref={sectionRef}>
-      {/* ── Header ── */}
-      <div className="testimonials-header">
-        <div>
-          <div className="testimonials-label" ref={labelRef}>
-            <span className="testimonials-label-text">What people say</span>
+      <div className="testimonials-container">
+        {/* ── Header ── */}
+        <div className="testimonials-header">
+          <div className="testimonials-header-left">
+            <div className="testimonials-label" ref={labelRef}>
+              <span className="testimonials-label-text">What People Say</span>
+            </div>
+
+            <h2 className="testimonials-heading" ref={headingRef}>
+              <em>Trusted</em>
+              <br />
+              by families across Hampshire
+            </h2>
           </div>
-          <h2 className="testimonials-heading" ref={headingRef}>
-            <em>Trusted</em>
-            <br />
-            by families across Hampshire.
-          </h2>
-        </div>
 
-        <div className="testimonials-rating-block" ref={ratingsRef}>
-          <span className="testimonials-rating-num">9.8</span>
-          <div className="testimonials-rating-meta">
-            <span className="testimonials-rating-source">carehome.co.uk</span>
-            <span className="testimonials-rating-cqc">CQC Regulated</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Featured — full-width dark card ── */}
-      <div className="testimonials-featured-card" ref={featuredRef}>
-        <div className="testimonials-featured-pill">
-          <span className="testimonials-featured-pill-dot" />
-          CQC Report
-        </div>
-        <p className="testimonials-featured-quote">
-          {featured?.quote ?? FALLBACK_FEATURED.quote}
-        </p>
-        <span className="testimonials-featured-source">
-          {featured?.source ?? FALLBACK_FEATURED.source}
-        </span>
-      </div>
-
-      {/* ── Mini cards ── */}
-      <div className="testimonials-cards-row">
-        {mini.map(({ source, quote, author }, index) => (
-          <div
-            key={author}
-            className="testimonials-card"
-            ref={(el) => {
-              if (el) cardsRef.current[index] = el;
-            }}
-          >
-            <p className="testimonials-card-quote">"{quote}"</p>
-            <div className="testimonials-card-footer">
-              <span className="testimonials-card-author">{author}</span>
-              <span className="testimonials-card-source">{source}</span>
+          <div className="testimonials-header-right" ref={ratingsRef}>
+            <div className="testimonials-rating-card">
+              <div className="testimonials-rating-number">9.8</div>
+              <div className="testimonials-rating-meta">
+                <span className="testimonials-rating-source">
+                  carehome.co.uk
+                </span>
+                <span className="testimonials-rating-cqc">CQC Regulated</span>
+              </div>
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* ── Featured Card ── */}
+        <div className="testimonials-featured" ref={featuredRef}>
+          <div className="testimonials-featured-content">
+            <div className="testimonials-featured-badge">
+              <div className="testimonials-featured-badge-dot" />
+              <span className="testimonials-featured-badge-text">
+                CQC Report
+              </span>
+            </div>
+
+            <p className="testimonials-featured-quote">
+              &ldquo;{featured?.quote ?? FALLBACK_FEATURED.quote}&rdquo;
+            </p>
+
+            <span className="testimonials-featured-source">
+              {featured?.source ?? FALLBACK_FEATURED.source}
+            </span>
+          </div>
+        </div>
+
+        {/* ── Mini Cards Grid ── */}
+        <div className="testimonials-grid">
+          {mini.map(({ source, quote, author }, index) => (
+            <div
+              key={author}
+              className="testimonials-card"
+              ref={(el) => {
+                if (el) cardsRef.current[index] = el;
+              }}
+            >
+              <p className="testimonials-card-quote">&ldquo;{quote}&rdquo;</p>
+
+              <div className="testimonials-card-footer">
+                <span className="testimonials-card-author">{author}</span>
+                <span className="testimonials-card-source">{source}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

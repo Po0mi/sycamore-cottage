@@ -43,12 +43,19 @@ const About = () => {
 
   return (
     <section className="about" id="about" ref={sectionRef}>
+      {/* Image Bleed - Right Side */}
       <div className="about-image-bleed">
         <div className="about-image-inner">
-          <Image src={Elder} alt="Elderly resident at Sycamore Cottage" fill />
+          <Image
+            src={Elder}
+            alt="Elderly resident at Sycamore Cottage enjoying a peaceful moment"
+            fill
+            priority
+          />
         </div>
       </div>
 
+      {/* Content */}
       <div className="about-label">
         <span className="about-label-text">Living &amp; Thriving</span>
       </div>
@@ -98,7 +105,7 @@ const About = () => {
               </button>
 
               <div className="about-feature-body" aria-hidden={!isOpen}>
-                <p className="about-feature-desc">{desc}</p>
+                <div className="about-feature-desc">{desc}</div>
               </div>
             </div>
           );
