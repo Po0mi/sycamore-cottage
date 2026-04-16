@@ -114,6 +114,20 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.book-tour-date-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 0.75rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr 1fr;
+
+    select:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
 .book-tour-field input,
 .book-tour-field textarea {
   background: transparent;
@@ -134,6 +148,48 @@
 
   &:focus {
     border-bottom-color: var(--blue-mid);
+  }
+}
+
+// ── Date dropdowns ─────────────────────
+.book-tour-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 0.65rem 2rem 0.65rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--white);
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+
+  &:focus {
+    border-color: var(--blue-mid);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  option {
+    background: #1c1c2e;
+    color: var(--white);
   }
 }
 

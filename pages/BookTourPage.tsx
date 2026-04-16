@@ -12,15 +12,27 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
 interface FormState {
   name: string;
   phone: string;
-  date: string;
+  day: string;
+  month: string;
+  year: string;
   message: string;
 }
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 2 }, (_, i) => String(currentYear + i));
 
 const BookTourPage = () => {
   const [form, setForm] = useState<FormState>({
     name: "",
     phone: "",
-    date: "",
+    day: "",
+    month: "",
+    year: "",
     message: "",
   });
   const [sent, setSent] = useState(false);
@@ -42,7 +54,7 @@ const BookTourPage = () => {
   } = useBookTourAnimation();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +69,7 @@ const BookTourPage = () => {
         {
           from_name: form.name,
           phone: form.phone,
-          visit_date: form.date,
+          visit_date: `${form.day} ${form.month} ${form.year}`,
           message: form.message || "No message provided.",
           time: new Date().toLocaleString("en-GB", {
             dateStyle: "long",
@@ -187,14 +199,50 @@ const BookTourPage = () => {
                 <span className="book-tour-field-label">
                   Preferred visit date
                 </span>
-                <input
-                  name="date"
-                  type="date"
-                  value={form.date}
-                  onChange={handleChange}
-                  required
-                  disabled={loading}
-                />
+                <div className="book-tour-date-row">
+                  <select
+                    name="day"
+                    value={form.day}
+                    onChange={handleChange}
+                    required
+                    disabled={loading}
+                  >
+                    <option value="">Day</option>
+                    {Array.from({ length: 31 }, (_, i) => (
+                      <option key={i + 1} value={String(i + 1)}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    name="month"
+                    value={form.month}
+                    onChange={handleChange}
+                    required
+                    disabled={loading}
+                  >
+                    <option value="">Month</option>
+                    {MONTHS.map((m) => (
+                      <option key={m} value={m}>
+                        {m}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    name="year"
+                    value={form.year}
+                    onChange={handleChange}
+                    required
+                    disabled={loading}
+                  >
+                    <option value="">Year</option>
+                    {YEARS.map((y) => (
+                      <option key={y} value={y}>
+                        {y}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div
