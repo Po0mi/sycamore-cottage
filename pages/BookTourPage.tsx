@@ -5,8 +5,8 @@ import emailjs from "@emailjs/browser";
 import useBookTourAnimation from "@/hooks/useBookTourAnimation";
 import "./BookTourPage.scss";
 
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
+const SERVICE_ID = "service_yreu7ri";
+const TEMPLATE_ID = "template_b8ftbhn";
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
 
 interface FormState {
