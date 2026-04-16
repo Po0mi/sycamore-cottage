@@ -114,9 +114,61 @@
   z-index: 2;
 }
 
+// ── CTA Row ─────────────────────────────
+.hero-cta-row {
+  grid-area: 4 / 2 / 5 / 7;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  padding-bottom: 2rem;
+}
+
+.hero-cta-primary {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.1vw, 0.7rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: color-mix(in srgb, var(--blue) 85%, black);
+    transform: scale(0.98);
+  }
+}
+
+.hero-cta-secondary {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  background: transparent;
+  color: var(--gray-100, #f5f5f5);
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.1vw, 0.7rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: #fff;
+    color: #fff;
+    transform: scale(0.98);
+  }
+}
+
 // ── Trust Badge ─────────────────────────
 .hero-trust-row {
-  grid-area: 3 / 2 / 6 / 7;
+  grid-area: 4 / 2 / 6 / 7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +176,7 @@
   flex-wrap: wrap;
   z-index: 2;
   align-self: center;
-  padding-left: 1rem;
+  padding-bottom: 5rem;
 }
 
 .hero-trust-div {
@@ -171,7 +223,7 @@
 // ─────────────────────────────────────────
 .hero-mouse-scroll {
   position: absolute;
-  bottom: 10rem;
+  bottom: 8rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -313,6 +365,10 @@
 @media (max-width: 480px) {
   .hero-container {
     padding: 6rem 1.25rem 4rem;
+  }
+
+  .hero-cta-row {
+    align-self: center;
   }
 
   .hero-label {

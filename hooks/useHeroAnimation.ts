@@ -16,6 +16,7 @@ const useHeroAnimation = () => {
           ".hero-title",
           ".hero-title2",
           ".hero-sub",
+          ".hero-cta-row",
           ".hero-actions",
           ".hero-mouse-scroll",
         ],
@@ -37,6 +38,7 @@ const useHeroAnimation = () => {
         .to(".hero-title", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
         .to(".hero-title2", { opacity: 1, y: 0, duration: 0.7 }, "-=0.65")
         .to(".hero-sub", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+        .to(".hero-cta-row", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
         .to(".hero-actions", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
         .to(
           ".hero-trust-item",
