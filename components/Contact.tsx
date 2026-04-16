@@ -17,7 +17,6 @@ interface ContactProps {
 const Contact = ({ contact }: ContactProps) => {
   const {
     sectionRef,
-    bgTextRef,
     labelRef,
     headingRef,
     ctaRef,

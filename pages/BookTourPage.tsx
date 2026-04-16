@@ -5,8 +5,8 @@ import emailjs from "@emailjs/browser";
 import useBookTourAnimation from "@/hooks/useBookTourAnimation";
 import "./BookTourPage.scss";
 
-const SERVICE_ID = "service_yreu7ri";
-const TEMPLATE_ID = "template_b8ftbhn";
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
 
 interface FormState {
@@ -29,7 +29,6 @@ const BookTourPage = () => {
 
   const {
     sectionRef,
-    bgTextRef,
     labelRef,
     labelLinesRef,
     headingRef,
@@ -107,7 +106,7 @@ const BookTourPage = () => {
           </h1>
 
           <p className="book-tour-sub" ref={subRef}>
-            Fill in your details and we'll be in touch to confirm a time that
+            Fill in your details and we&apos;ll be in touch to confirm a time that
             works for you and your family.
           </p>
 
@@ -135,7 +134,7 @@ const BookTourPage = () => {
               </svg>
               <div>
                 <strong>Request received!</strong>
-                <p>We'll be in touch within 24 hours to confirm your visit.</p>
+                <p>We&apos;ll be in touch within 24 hours to confirm your visit.</p>
               </div>
             </div>
           ) : (
