@@ -312,7 +312,6 @@
     justify-content: center;
     align-items: flex-start;
     padding: 7rem 1.5rem 5rem;
-    gap: 1.25rem;
   }
 
   .hero-label {
@@ -394,6 +393,8 @@
 
   .hero-sub {
     align-self: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
   }
   .hero-mouse-scroll {
     bottom: 5rem;
