@@ -38,7 +38,7 @@ const MusicPlayer = ({
   });
 
   const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.18);
+  const [volume, setVolume] = useState(0.05);
   const [visible, setVisible] = useState(true);
   const [pos, setPos] = useState<Position>({ x: null, y: null });
   const [dragged, setDragged] = useState(false);
@@ -46,7 +46,7 @@ const MusicPlayer = ({
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !src) return;
-    audio.volume = 0.18;
+    audio.volume = 0.05;
     const tryPlay = () => {
       audio
         .play()
