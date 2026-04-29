@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRef, useEffect } from "react";
 import mouseSvg from "@/assets/mouse.svg";
 import useHeroAnimation from "@/hooks/useHeroAnimation";
 import "./Hero.scss";
@@ -9,14 +10,53 @@ import "./Hero.scss";
 const Hero = () => {
   const { containerRef } = useHeroAnimation();
 
+  // Explicitly type the video ref
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const handleScrollClick = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+
+    if (!video || !container) return;
+
+    // Ensure video is muted to allow autoplay policies to pass
+    video.muted = true;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Play when visible
+          video.play().catch((err) => {
+            console.warn("Video play failed:", err);
+          });
+        } else {
+          // Pause when hidden
+          video.pause();
+        }
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the hero is visible
+      },
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      // Optional: pause video on unmount to save resources
+      if (video) video.pause();
+    };
+  }, [containerRef]);
+
   return (
     <section className="hero" id="home">
       <div className="hero-container" ref={containerRef}>
-        <video autoPlay muted loop playsInline className="hero-video">
+        {/* Removed autoPlay - let IntersectionObserver handle it */}
+        <video muted loop playsInline className="hero-video" ref={videoRef}>
           <source src="/video/heroBg.webm" type="video/webm" />
         </video>
 
