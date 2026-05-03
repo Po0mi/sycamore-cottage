@@ -5,6 +5,7 @@ import Footer from "@/layouts/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
 import "./globals.css";
 import "@/styles/global.scss";
+import { Analytics } from "@vercel/analytics/next";
 
 // Switzer Font - All 18 variants
 const switzer = localFont({
@@ -137,6 +138,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
+        <Analytics />
         <Footer />
         <MusicPlayer src="/audio/ambient.mp3" />
       </body>
